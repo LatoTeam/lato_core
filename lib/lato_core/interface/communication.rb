@@ -5,6 +5,33 @@ module LatoCore
     module Communication
 
 
+      # Ritorna l'url relativo della directory a cui rimandare dopo aver effettuato il login in lato. Se tale valore non è settato nel file di configurazione di lato allora ritorna semplicemente false.
+      def core_getApplicationLoginRoot
+        directory = core_getCacheDirectory
+        if File.exists? ("#{directory}/config.yml")
+          config = YAML.load(File.read(File.expand_path("#{directory}/config.yml", __FILE__)))
+          if(config and config['login_home'])
+            return config['login_home']
+          else
+            return false
+          end
+        else
+          return false
+        end
+      end
+
+
+      # Ritorna l'url del logo custom da applicare alla applicazione Lato. Se non è stato caricato alcun logo allora ritorna false
+      def core_getApplicationLogo
+        directory = core_getCacheDirectory
+        if FileTest.exist?("#{directory}/logo.svg")
+           return File.read("#{directory}/logo.svg")
+        else
+          return false
+        end
+      end
+
+
       # Ritorna il nome dell'applicazione principale settato nel file config/lato/config.yml. Se l'applicazione principale non specifica nessun nome allora la funzione ritorna il valore 'Lato'
       def core_getApplicationName
         directory = core_getCacheDirectory
