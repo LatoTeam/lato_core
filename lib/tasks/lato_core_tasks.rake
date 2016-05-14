@@ -24,6 +24,7 @@ task :lato_create_config_file do
   config['assets']['code']['url'] = 'application'
   config['assets']['code']['type'] = 'js'
   config['languages'] = 'it, en'
+  config['login_home'] = '/example'
 
   # creo il file di configurazione per lato
   File.open("#{directory}/config.yml", 'w') {|f| f.write config.to_yaml }

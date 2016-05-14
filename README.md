@@ -68,6 +68,9 @@ assets:
 # Impostazione lingue applicazione
 languages: it, en, de
 
+# Impostazione home del personalizzata del pannello di amministrazione
+login_home: /example
+
 ```
 * app_name: indica il nome della applicazione principale sviluppata con Lato.
 * menu: elenca le voci da inserire nella barra di navigazione di Lato.

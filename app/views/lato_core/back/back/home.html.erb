@@ -1,5 +1,5 @@
-<% if(core_getApplicationLoginRoot) %>
-
+<% if(login_root = core_getApplicationLoginRoot and login_root) %>
+  <% controller.redirect_to login_root %>
 <% end %>
 
 <% block = view(:block).new() %>

@@ -4,6 +4,10 @@
 
 <%=raw block.open %>
 
+  <%=raw view(:searchbar).new(elements: @search_superusers,
+                            url: lato_core.superusers_path,
+                            filter: :username_cont) %>
+
   <%=raw view(:index).new(head: [CORE_LANG['vocabolary']['username'], CORE_LANG['vocabolary']['email']],
                        elements: @superusers,
                        attributes: ['username', 'email'],

@@ -127,7 +127,8 @@ module LatoCore
     # Richiama la view per la visualizzazione di tutti gli utenti
     # del sistema
     def index
-      @superusers = LatoCore::Superuser.all
+      @search_superusers = LatoCore::Superuser.ransack(params[:q])
+      @superusers = @search_superusers.result
     end
 
 
