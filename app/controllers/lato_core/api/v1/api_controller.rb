@@ -1,8 +1,9 @@
 module LatoCore
-
-  # Classe che gestisce le API del modulo
-  class Api::V1::ApiController < ApplicationController
-
+  module Api
+    module V1
+      # Classe che gestisce le API del modulo
+      class ApiController < ApplicationController
+      end
+    end
   end
-  
 end

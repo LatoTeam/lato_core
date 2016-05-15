@@ -1,79 +1,74 @@
 module LatoCore
   module Interface
-
-    # Insieme di funzioni che permettono di ottenere informazioni sulla applicazione principale e sulle altre gemme che lavorano su di essa
+    # Insieme di funzioni che permettono di ottenere informazioni sulla
+    # applicazione principale e sulle altre gemme che lavorano su di essa
     module Communication
-
-
-      # Ritorna l'url relativo della directory a cui rimandare dopo aver effettuato il login in lato. Se tale valore non è settato nel file di configurazione di lato allora ritorna semplicemente false.
+      # Ritorna l'url relativo della directory a cui rimandare dopo
+      # aver effettuato il login in lato. Se tale valore non e' settato
+      # nel file di configurazione di lato allora ritorna semplicemente false.
       def core_getApplicationLoginRoot
         directory = core_getCacheDirectory
-        if File.exists? ("#{directory}/config.yml")
-          config = YAML.load(File.read(File.expand_path("#{directory}/config.yml", __FILE__)))
-          if(config and config['login_home'])
-            return config['login_home']
-          else
-            return false
-          end
+        if File.exist? "#{directory}/config.yml"
+          config = YAML.load(
+            File.read(File.expand_path("#{directory}/config.yml", __FILE__))
+          )
+          return config['login_home'] if config && config['login_home']
         else
           return false
         end
       end
 
-
-      # Ritorna l'url del logo custom da applicare alla applicazione Lato. Se non è stato caricato alcun logo allora ritorna false
+      # Ritorna l'url del logo custom da applicare alla applicazione Lato.
+      # Se non e' stato caricato alcun logo allora ritorna false
       def core_getApplicationLogo
         directory = core_getCacheDirectory
-        if FileTest.exist?("#{directory}/logo.svg")
-           return File.read("#{directory}/logo.svg")
+        if File.exist? "#{directory}/logo.svg"
+          return File.read("#{directory}/logo.svg")
         else
           return false
         end
       end
 
-
-      # Ritorna il nome dell'applicazione principale settato nel file config/lato/config.yml. Se l'applicazione principale non specifica nessun nome allora la funzione ritorna il valore 'Lato'
+      # Ritorna il nome dell'applicazione principale settato nel file
+      # config/lato/config.yml.
+      # Se l'applicazione principale non specifica nessun nome allora
+      # la funzione ritorna il valore 'Lato'
       def core_getApplicationName
         directory = core_getCacheDirectory
-        if File.exists? ("#{directory}/config.yml")
-          config = YAML.load(File.read(File.expand_path("#{directory}/config.yml", __FILE__)))
-          if(config and config['app_name'])
-            return config['app_name']
-          else
-            return 'Lato'
-          end
-        else
-          return 'Lato'
+        if File.exist? "#{directory}/config.yml"
+          config = YAML.load(
+            File.read(File.expand_path("#{directory}/config.yml", __FILE__))
+          )
+          return config['app_name'] if config && config['app_name'] else return 'Lato'
         end
       end
 
-
-      # Esamina tutte le gemme della applicazione principale e ritorna solamente quelle appartenenti al progetto Lato.
+      # Esamina tutte le gemme della applicazione principale e ritorna
+      # solamente quelle appartenenti al progetto Lato.
       # * *Returns* :
-      # - array di stringhe con i nomi delle gemme del progetto Lato usate dall'applicazione
+      # - array di stringhe con i nomi delle gemme del progetto Lato usate
+      # dall'applicazione
       def core_getLatoGems
         gems = core_getGems
         lato_gems = []
         # controllo ogni gemma
         gems.each do |name|
-          if(name.start_with? 'lato')
-            lato_gems.push(name)
-          end
+          lato_gems.push(name) if name.start_with? 'lato'
         end
         # ritorno il risultato
-        return lato_gems
+        lato_gems
       end
 
-
-      # Ritorna la lista dei nomi delle gemme utilizzate dalla applicazione principale
+      # Ritorna la lista dei nomi delle gemme utilizzate dalla applicazione
+      # principale
       # * *Returns* :
       # - array di stringhe con i nomi delle gemme dell'applicazione
       def core_getGems
         require 'bundler'
-        return Bundler.load.specs.map { |spec| spec.name }
+        Bundler.load.specs.map { |spec| spec.name }
       end
-
+      # Fine funzioni modulo
     end
-
+    # Fine funzioni Communication
   end
 end
