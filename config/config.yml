@@ -4,4 +4,4 @@ menu:
     name: Utenti
     url: /lato/core/superusers
     icon: user
-    position: 1
+    position: 10
