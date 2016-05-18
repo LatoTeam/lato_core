@@ -1,12 +1,12 @@
 <% block = view(:block).new %>
+<% searchbar = view(:searchbar).new(elements: @search_superusers,
+                            url: lato_core.superusers_path,
+                            filter: :username_cont)  %>
 
-<%=raw view(:actionbar).new(links: [[CORE_LANG['vocabolary']['new'], lato_core.new_superuser_path]], title: CORE_LANG['vocabolary']['users']) %>
+<%=raw view(:actionbar).new(links: [[CORE_LANG['vocabolary']['new'], lato_core.new_superuser_path]], title: CORE_LANG['vocabolary']['users'], widgets: [[searchbar, 1, :right]]) %>
 
 <%=raw block.open %>
 
-  <%=raw view(:searchbar).new(elements: @search_superusers,
-                            url: lato_core.superusers_path,
-                            filter: :username_cont) %>
 
   <%=raw view(:index).new(head: [CORE_LANG['vocabolary']['username'], CORE_LANG['vocabolary']['email']],
                        elements: @superusers,
