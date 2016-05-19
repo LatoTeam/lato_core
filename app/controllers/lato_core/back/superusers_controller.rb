@@ -72,7 +72,7 @@ module LatoCore
           redirect_to lato_core.superusers_path && return
         end
         # faccio in modo che l'aggiornamento avvenga senza problemi anche se
-        # la password non è stata inserita
+        # la password non e' stata inserita
         if params[:superuser][:password].blank? &&
            params[:superuser][:password_confirmation].blank?
           params[:superuser].delete(:password)
@@ -129,7 +129,7 @@ module LatoCore
       # del sistema
       def index
         @search_superusers = LatoCore::Superuser.ransack(params[:q])
-        @superusers = @search_superusers.result.paginate(page: params[:page], per_page: 1)
+        @superusers = @search_superusers.result
       end
 
       # Definisce i parametri accettati per le azioni di aggiornamento della
