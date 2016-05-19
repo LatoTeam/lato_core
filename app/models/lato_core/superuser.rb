@@ -23,8 +23,8 @@ module LatoCore
 
     # Azioni prima del salvataggio
     before_save do
-      self.username = username.downcase
-      self.email = email.downcase
+      username.downcase!
+      email.downcase!
 
       set_admin_permission
     end
@@ -33,7 +33,7 @@ module LatoCore
     # massimo livello
     private def set_admin_permission
       first_user = LatoCore::Superuser.first
-      self.permission = 10 if first_user && self.id === first_user.id
+      self.permission = 10 if first_user && id === first_user.id
     end
     # Fine funzioni modello
   end

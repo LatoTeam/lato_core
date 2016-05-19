@@ -17,5 +17,6 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 4.2.5.1"
   s.add_dependency "bcrypt"
   s.add_dependency "ransack"
+  s.add_dependency "will_paginate"
 
 end

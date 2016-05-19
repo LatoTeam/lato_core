@@ -58,7 +58,8 @@ module LatoCore
           flash[:warning] = CORE_LANG['superusers']['not_found']
           redirect_to lato_core.superusers_path && return
         end
-        # controllo che l'utente da modificare non abbia permessi uguali o maggiori dell'utente modificatore
+        # controllo che l'utente da modificare non abbia permessi uguali o
+        # maggiori dell'utente modificatore
         if superuser.permission >= core_getCurrentUser.permission &&
            superuser != core_getCurrentUser
           flash[:warning] = CORE_LANG['superusers']['permission_update']
@@ -70,7 +71,8 @@ module LatoCore
           flash[:warning] = CORE_LANG['superusers']['level_update']
           redirect_to lato_core.superusers_path && return
         end
-        # faccio in modo che l'aggiornamento avvenga senza problemi anche se la password non è stata inserita
+        # faccio in modo che l'aggiornamento avvenga senza problemi anche se
+        # la password non è stata inserita
         if params[:superuser][:password].blank? &&
            params[:superuser][:password_confirmation].blank?
           params[:superuser].delete(:password)
@@ -99,7 +101,8 @@ module LatoCore
           flash[:warning] = CORE_LANG['superusers']['itself_destroy']
           redirect_to lato_core.superusers_path && return
         end
-        # controllo che l'utente da eliminare non abbia permessi maggiori o uguali all'utente eliminatore
+        # controllo che l'utente da eliminare non abbia permessi maggiori o
+        # uguali all'utente eliminatore
         if superuser.permission >= core_getCurrentUser.permission
           flash[:warning] = CORE_LANG['superusers']['permission_destroy']
           redirect_to lato_core.superusers_path && return
@@ -126,7 +129,7 @@ module LatoCore
       # del sistema
       def index
         @search_superusers = LatoCore::Superuser.ransack(params[:q])
-        @superusers = @search_superusers.result
+        @superusers = @search_superusers.result.paginate(page: params[:page], per_page: 1)
       end
 
       # Definisce i parametri accettati per le azioni di aggiornamento della
