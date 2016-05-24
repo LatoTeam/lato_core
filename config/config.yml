@@ -5,3 +5,4 @@ menu:
     url: /lato/core/superusers
     icon: users
     position: 10
+    permission: 10
