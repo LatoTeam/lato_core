@@ -20,12 +20,12 @@ module LatoCore
         # creatore
         if superuser.permission > core_getCurrentUser.permission
           flash[:warning] = CORE_LANG['superusers']['permission_create']
-          redirect_to lato_core.superusers_path && return
+          redirect_to lato_core.superusers_path and return false
         end
         # controllo che la creazione dell'utente non abbia avuto errori
         unless superuser.save
           flash[:danger] = CORE_LANG['superusers']['failed_create']
-          redirect_to lato_core.superusers_path && return
+          redirect_to lato_core.superusers_path and return false
         end
 
         flash[:success] = CORE_LANG['superusers']['success_create']
@@ -39,14 +39,14 @@ module LatoCore
         # controllo che l'utente da modificare esista
         unless @superuser
           flash[:warning] = CORE_LANG['superusers']['not_found']
-          redirect_to lato_core.superusers_path && return
+          redirect_to lato_core.superusers_path and return false
         end
         # controllo che l'utente da modificare non abbia permessi uguali o
         # maggiori dell'utente modificatore
         if @superuser.permission >= core_getCurrentUser.permission &&
            @superuser.permission != core_getCurrentUser.permission
           flash[:warning] = CORE_LANG['superusers']['permission_update']
-          redirect_to lato_core.superusers_path && return
+          redirect_to lato_core.superusers_path and return false
         end
       end
 
@@ -56,20 +56,20 @@ module LatoCore
         # controllo che l'utente da modificare esista
         unless superuser
           flash[:warning] = CORE_LANG['superusers']['not_found']
-          redirect_to lato_core.superusers_path && return
+          redirect_to lato_core.superusers_path and return false
         end
         # controllo che l'utente da modificare non abbia permessi uguali o
         # maggiori dell'utente modificatore
         if superuser.permission >= core_getCurrentUser.permission &&
            superuser != core_getCurrentUser
           flash[:warning] = CORE_LANG['superusers']['permission_update']
-          redirect_to lato_core.superusers_path && return
+          redirect_to lato_core.superusers_path and return false
         end
         # controllo che l'utente non si stia auto aumentando i permessi
         if superuser.id === core_getCurrentUser.id &&
            superuser.permission < params[:superuser][:permission].to_i
           flash[:warning] = CORE_LANG['superusers']['level_update']
-          redirect_to lato_core.superusers_path && return
+          redirect_to lato_core.superusers_path and return false
         end
         # faccio in modo che l'aggiornamento avvenga senza problemi anche se
         # la password non e' stata inserita
@@ -81,7 +81,7 @@ module LatoCore
         # controllo che non ci siano stati errori di aggiornamento
         unless superuser.update(superuser_params)
           flash[:danger] = CORE_LANG['superusers']['failed_update']
-          redirect_to lato_core.superuser_path(superuser) && return
+          redirect_to lato_core.superuser_path(superuser) and return false
         end
 
         flash[:success] = CORE_LANG['superusers']['success_update']
@@ -94,23 +94,23 @@ module LatoCore
         # controllo che l'utente da eliminare esista
         unless superuser
           flash[:warning] = CORE_LANG['superusers']['not_found']
-          redirect_to lato_core.superusers_path && return
+          redirect_to lato_core.superusers_path and return false
         end
         # controllo che l'utente non stia provando a eliminare se stesso
         if superuser === core_getCurrentUser
           flash[:warning] = CORE_LANG['superusers']['itself_destroy']
-          redirect_to lato_core.superusers_path && return
+          redirect_to lato_core.superusers_path and return false
         end
         # controllo che l'utente da eliminare non abbia permessi maggiori o
         # uguali all'utente eliminatore
         if superuser.permission >= core_getCurrentUser.permission
           flash[:warning] = CORE_LANG['superusers']['permission_destroy']
-          redirect_to lato_core.superusers_path && return
+          redirect_to lato_core.superusers_path and return false
         end
         # controllo che non ci siano stati errori durante l'eliminazione
         unless superuser.destroy
           flash[:danger] = CORE_LANG['superusers']['failed_destroy']
-          redirect_to lato_core.superuser_path(superuser) && return
+          redirect_to lato_core.superuser_path(superuser) and return false
         end
 
         flash[:success] = CORE_LANG['superusers']['success_destroy']
