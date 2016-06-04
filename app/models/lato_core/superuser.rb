@@ -35,7 +35,7 @@ module LatoCore
       first_user = LatoCore::Superuser.first
       self.permission = 10 if first_user && id === first_user.id
     end
-    # Fine funzioni modello
+
   end
-  # Fine modello Superuser
+
 end

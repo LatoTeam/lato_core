@@ -17,8 +17,8 @@ module LatoCore
       def home
         @message = CORE_LANG['welcome'] + ' ' + CORE_APPNAME
       end
-      # Fine funzioni controller
+
     end
-    # Fine controller Back::BackController
+
   end
 end

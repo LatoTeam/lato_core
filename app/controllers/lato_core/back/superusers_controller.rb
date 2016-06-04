@@ -129,7 +129,20 @@ module LatoCore
       # del sistema
       def index
         @search_superusers = LatoCore::Superuser.ransack(params[:q])
-        @superusers = @search_superusers.result
+        # controllo che non vengano mostrati gli utenti impostati nascosti
+        if CORE_SUPERUSERSHIDESETTINGS && !CORE_SUPERUSERSHIDESETTINGS.blank?
+          permissions_not_accepted = []
+          current_user_permission = core_getCurrentUser.permission
+          CORE_SUPERUSERSHIDESETTINGS.each do |setting|
+            permissions_not_accepted.push(setting.first) if setting.last.to_i === current_user_permission
+          end
+          @superusers = @search_superusers.result.where.not(permission: permissions_not_accepted)
+        else
+          @superusers = @search_superusers.result
+        end
+        @superusers = @superusers.order(
+          'username ASC'
+        ).paginate(page: params[:page], per_page: 10)
       end
 
       # Definisce i parametri accettati per le azioni di aggiornamento della
@@ -143,8 +156,8 @@ module LatoCore
       private def set_unique_name
         view_setCurrentVoice('core_superusers')
       end
-      # Fine funzioni controller
+
     end
-    # Fine controller Back::Superusers
+
   end
 end

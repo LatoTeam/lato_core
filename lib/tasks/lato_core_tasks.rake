@@ -13,7 +13,7 @@ task :lato_create_config_file do
   config['menu']['example'] = {}
   config['menu']['example']['name'] = 'Menu voice'
   config['menu']['example']['url'] = '/'
-  config['menu']['example']['icon'] = ''
+  config['menu']['example']['icon'] = 'home'
   config['menu']['example']['position'] = 1
   config['menu']['example']['permission'] = 0
   config['assets'] = {}
@@ -25,6 +25,7 @@ task :lato_create_config_file do
   config['assets']['code']['type'] = 'js'
   config['languages'] = 'it, en'
   config['login_home'] = '/example'
+  config['hide_users'] = '1 to 2, 4 to 6'
   # creo il file di configurazione per lato
   File.open("#{directory}/config.yml", 'w') { |f| f.write config.to_yaml }
 end

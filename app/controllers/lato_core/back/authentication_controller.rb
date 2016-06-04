@@ -21,8 +21,8 @@ module LatoCore
         core_destroySession
         redirect_to lato_core.login_path
       end
-      # Fine funzioni controller
+
     end
-    # Fine controller Back::Authentication
+
   end
 end

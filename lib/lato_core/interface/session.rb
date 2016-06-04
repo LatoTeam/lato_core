@@ -65,8 +65,8 @@ module LatoCore
           return false
         end
       end
-      # Fine funzioni modulo
+
     end
-    # Fine modulo Session
+
   end
 end

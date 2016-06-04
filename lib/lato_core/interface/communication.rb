@@ -67,8 +67,8 @@ module LatoCore
         require 'bundler'
         Bundler.load.specs.map { |spec| spec.name }
       end
-      # Fine funzioni modulo
+
     end
-    # Fine funzioni Communication
+
   end
 end

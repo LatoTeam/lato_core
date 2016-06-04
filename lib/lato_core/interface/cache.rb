@@ -10,8 +10,8 @@ module LatoCore
         FileUtils.mkdir_p(dirname) unless File.exist?(dirname)
         dirname
       end
-      # Fine funzioni modulo
+
     end
-    # Fine funzioni Cache
+
   end
 end

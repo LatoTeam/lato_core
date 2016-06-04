@@ -1,6 +1,7 @@
 <% block = view(:block).new %>
 
-<%=raw view(:actionbar).new(title: CORE_LANG['vocabolary']['new'], links: [[CORE_LANG['vocabolary']['users'], lato_core.superusers_path]]) %>
+<%=raw view(:actionbar).new(title: CORE_LANG['vocabolary']['new'],
+                            links: [[CORE_LANG['vocabolary']['users'], lato_core.superusers_path]]) %>
 
 <%=raw block.open %>
 

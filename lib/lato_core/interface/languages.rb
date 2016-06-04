@@ -51,8 +51,8 @@ module LatoCore
           )
         end
       end
-      # Fine funzioni modulo
+
     end
-    # Fine modulo Languages
+
   end
 end

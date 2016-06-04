@@ -28,8 +28,8 @@ module LatoCore
         user = core_getCurrentUser
         user && user.permission >= permission
       end
-      # Fine funzioni modulo
+
     end
-    # Fine funzioni Authentication
+
   end
 end

@@ -100,8 +100,8 @@ module LatoCore
         # ritorno il risultato
         results
       end
-      # Fine funzioni modulo
+
     end
-    # Fine modulo Navigation
+
   end
 end

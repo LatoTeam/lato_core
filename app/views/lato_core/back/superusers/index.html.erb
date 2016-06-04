@@ -5,7 +5,9 @@
                             filter: :username_cont,
                             style: :rounded)  %>
 
-<%=raw view(:actionbar).new(links: [[CORE_LANG['vocabolary']['new'], lato_core.new_superuser_path]], title: CORE_LANG['vocabolary']['users'], widgets: [[searchbar, :right]]) %>
+<%=raw view(:actionbar).new(links: [[CORE_LANG['vocabolary']['new'], lato_core.new_superuser_path]],
+                            title: CORE_LANG['vocabolary']['users'],
+                            widgets: [[searchbar, :right]]) %>
 
 <%=raw block.open %>
 
@@ -15,5 +17,7 @@
                        attributes: ['username', 'email'],
                        link: lato_core.superusers_path,
                        show_link: false) %>
+
+  <%= will_paginate @superusers %>
 
 <%=raw block.close %>

@@ -22,5 +22,8 @@ module LatoCore
     # Azioni principali per la gestione delle lingue
     require 'lato_core/interface/languages'
     include LatoCore::Interface::Languages
+    # Azioni principali per la gestione delle impostazioni superusers
+    require 'lato_core/interface/superusers'
+    include LatoCore::Interface::Superusers
   end
 end

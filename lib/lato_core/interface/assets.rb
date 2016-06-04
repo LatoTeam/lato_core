@@ -85,8 +85,8 @@ module LatoCore
         # ritorno il risultato
         results
       end
-      # Fine funzioni modulo
+
     end
-    # Fine modulo Assets
+
   end
 end
