@@ -1,4 +1,5 @@
 module LatoCore
+  # Modello che si riferisce agli utenti con accesso al pannello di amministrazione
   class Superuser < ActiveRecord::Base
     # Lista validazioni
     validates :name, presence: true, length: { maximum: 50 }

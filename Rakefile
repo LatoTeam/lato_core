@@ -9,8 +9,9 @@ require 'rdoc/task'
 RDoc::Task.new(:rdoc) do |rdoc|
   rdoc.rdoc_dir = 'doc'
   rdoc.title    = 'LatoCore'
-  rdoc.options << '--line-numbers'
-  rdoc.rdoc_files.include('lib/lato_core/interface/**/*.rb')
+  rdoc.rdoc_files.include('README.md')
+  rdoc.rdoc_files.include('lib/lato_core.rb')
+  rdoc.rdoc_files.include('lib/lato_core/**/*.rb')
   rdoc.rdoc_files.include('app/models/**/*.rb')
 end
 

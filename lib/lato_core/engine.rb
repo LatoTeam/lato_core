@@ -1,6 +1,7 @@
 module LatoCore
-
-  # Classe che gestisce l'inizializzazione del modulo
+  # Classe che gestisce l'inizializzazione del modulo.
+  # Principalmente si occupa di rendere obbligatorie le migrazioni nell'app
+  # principale e di inserire nel Rails.application.routes le routes del modulo.
   class Engine < ::Rails::Engine
     isolate_namespace LatoCore
 

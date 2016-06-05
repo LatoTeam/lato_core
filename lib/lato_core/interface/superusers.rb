@@ -6,9 +6,9 @@ module LatoCore
 
       # Funzione che legge il file di cache e, se e' stato impostato per nascondere
       # determinati utenti ad altri utenti, ritorna tali informazione attraverso
-      # un array con la seguente struttura:
-      # [[1,4],[1,3]] -> Nascondi utenti con permessi 1 ad utenti con permessi 4, ...
+      # un array con la seguente struttura: [[1,4], [1,3]]
       def core_getHideUsersSettings
+        return CORE_SUPERUSERSHIDESETTINGS if defined? CORE_SUPERUSERSHIDESETTINGS
         # accedo al config.yml
         directory = core_getCacheDirectory
         config = YAML.load(

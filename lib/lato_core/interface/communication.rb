@@ -7,6 +7,7 @@ module LatoCore
       # aver effettuato il login in lato. Se tale valore non e' settato
       # nel file di configurazione di lato allora ritorna semplicemente false.
       def core_getApplicationLoginRoot
+        return CORE_APPLOGINROOT if defined? CORE_APPLOGINROOT
         directory = core_getCacheDirectory
         if File.exist? "#{directory}/config.yml"
           config = YAML.load(
@@ -21,6 +22,7 @@ module LatoCore
       # Ritorna l'url del logo custom da applicare alla applicazione Lato.
       # Se non e' stato caricato alcun logo allora ritorna false
       def core_getApplicationLogo
+        return CORE_APPLOGO if defined? CORE_APPLOGO
         directory = core_getCacheDirectory
         if File.exist? "#{directory}/logo.svg"
           return File.read("#{directory}/logo.svg")
@@ -34,6 +36,7 @@ module LatoCore
       # Se l'applicazione principale non specifica nessun nome allora
       # la funzione ritorna il valore 'Lato'
       def core_getApplicationName
+        return CORE_APPNAME if defined? CORE_APPNAME
         directory = core_getCacheDirectory
         if File.exist? "#{directory}/config.yml"
           config = YAML.load(
@@ -46,8 +49,7 @@ module LatoCore
       # Esamina tutte le gemme della applicazione principale e ritorna
       # solamente quelle appartenenti al progetto Lato.
       # * *Returns* :
-      # - array di stringhe con i nomi delle gemme del progetto Lato usate
-      # dall'applicazione
+      # - array di stringhe con i nomi delle gemme del progetto Lato usate dall'applicazione
       def core_getLatoGems
         gems = core_getGems
         lato_gems = []

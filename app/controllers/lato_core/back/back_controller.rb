@@ -15,7 +15,7 @@ module LatoCore
 
       # Richiama la view della home del pannello di backoffice
       def home
-        @message = CORE_LANG['welcome'] + ' ' + CORE_APPNAME
+        @message = CORE_LANG['welcome'] + ' ' + core_getApplicationName
       end
 
     end

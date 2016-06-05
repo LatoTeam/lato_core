@@ -71,6 +71,9 @@ languages: it, en, de
 # Impostazione home del personalizzata del pannello di amministrazione
 login_home: /example
 
+# Imposta quali utenti non mostrare ad altri utenti
+hide_users: 1 to 5, 3 to 6
+
 ```
 * app_name: indica il nome della applicazione principale sviluppata con Lato.
 * menu: elenca le voci da inserire nella barra di navigazione di Lato.

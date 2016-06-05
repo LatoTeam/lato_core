@@ -6,6 +6,7 @@ module LatoCore
       # Funzione che ritorna un array contenente gli url relativi degli assets
       # da usare nel layout di lato
       def core_getAssetsItems
+        return CORE_ASSETS if defined? CORE_ASSETS
         getLatoAssetsItems + getApplicationsAssetsItems
       end
 

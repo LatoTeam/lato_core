@@ -63,6 +63,10 @@
 
   <ul class="link-list" role="directory">
     
+    <li ><a href="#method-i-core_getApplicationLoginRoot">#core_getApplicationLoginRoot</a>
+    
+    <li ><a href="#method-i-core_getApplicationLogo">#core_getApplicationLogo</a>
+    
     <li ><a href="#method-i-core_getApplicationName">#core_getApplicationName</a>
     
     <li ><a href="#method-i-core_getGems">#core_getGems</a>
@@ -106,6 +110,90 @@ applicazione principale e sulle altre gemme che lavorano su di essa</p>
        </header>
 
     
+      <div id="method-i-core_getApplicationLoginRoot" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">core_getApplicationLoginRoot</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Ritorna l&#39;url relativo della directory a cui rimandare dopo aver
+effettuato il login in lato. Se tale valore non e&#39; settato nel file di
+configurazione di lato allora ritorna semplicemente false.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="core_getApplicationLoginRoot-source">
+            <pre><span class="ruby-comment"># File lib/lato_core/interface/communication.rb, line 9</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">core_getApplicationLoginRoot</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-constant">CORE_APPLOGINROOT</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">defined?</span> <span class="ruby-constant">CORE_APPLOGINROOT</span>
+  <span class="ruby-identifier">directory</span> = <span class="ruby-identifier">core_getCacheDirectory</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span> <span class="ruby-node">&quot;#{directory}/config.yml&quot;</span>
+    <span class="ruby-identifier">config</span> = <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(
+      <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-node">&quot;#{directory}/config.yml&quot;</span>, <span class="ruby-keyword">__FILE__</span>))
+    )
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">config</span>[<span class="ruby-string">&#39;login_home&#39;</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">config</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">config</span>[<span class="ruby-string">&#39;login_home&#39;</span>]
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-core_getApplicationLogo" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">core_getApplicationLogo</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Ritorna l&#39;url del logo custom da applicare alla applicazione Lato. Se
+non e&#39; stato caricato alcun logo allora ritorna false</p>
+          
+          
+
+          
+          <div class="method-source-code" id="core_getApplicationLogo-source">
+            <pre><span class="ruby-comment"># File lib/lato_core/interface/communication.rb, line 24</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">core_getApplicationLogo</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-constant">CORE_APPLOGO</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">defined?</span> <span class="ruby-constant">CORE_APPLOGO</span>
+  <span class="ruby-identifier">directory</span> = <span class="ruby-identifier">core_getCacheDirectory</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span> <span class="ruby-node">&quot;#{directory}/logo.svg&quot;</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-node">&quot;#{directory}/logo.svg&quot;</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
       <div id="method-i-core_getApplicationName" class="method-detail ">
         
         <div class="method-heading">
@@ -127,18 +215,15 @@ nessun nome allora la funzione ritorna il valore &#39;Lato&#39;</p>
 
           
           <div class="method-source-code" id="core_getApplicationName-source">
-            <pre><span class="ruby-comment"># File lib/lato_core/interface/communication.rb, line 9</span>
+            <pre><span class="ruby-comment"># File lib/lato_core/interface/communication.rb, line 38</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">core_getApplicationName</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-constant">CORE_APPNAME</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">defined?</span> <span class="ruby-constant">CORE_APPNAME</span>
   <span class="ruby-identifier">directory</span> = <span class="ruby-identifier">core_getCacheDirectory</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span> (<span class="ruby-node">&quot;#{directory}/config.yml&quot;</span>)
-    <span class="ruby-identifier">config</span> = <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-node">&quot;#{directory}/config.yml&quot;</span>, <span class="ruby-keyword">__FILE__</span>)))
-    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">config</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">config</span>[<span class="ruby-string">&#39;app_name&#39;</span>])
-      <span class="ruby-keyword">return</span> <span class="ruby-identifier">config</span>[<span class="ruby-string">&#39;app_name&#39;</span>]
-    <span class="ruby-keyword">else</span>
-      <span class="ruby-keyword">return</span> <span class="ruby-string">&#39;Lato&#39;</span>
-    <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">else</span>
-    <span class="ruby-keyword">return</span> <span class="ruby-string">&#39;Lato&#39;</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span> <span class="ruby-node">&quot;#{directory}/config.yml&quot;</span>
+    <span class="ruby-identifier">config</span> = <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(
+      <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-node">&quot;#{directory}/config.yml&quot;</span>, <span class="ruby-keyword">__FILE__</span>))
+    )
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">config</span>[<span class="ruby-string">&#39;app_name&#39;</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">config</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">config</span>[<span class="ruby-string">&#39;app_name&#39;</span>] <span class="ruby-keyword">else</span> <span class="ruby-keyword">return</span> <span class="ruby-string">&#39;Lato&#39;</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -176,10 +261,10 @@ principale</p>
 
           
           <div class="method-source-code" id="core_getGems-source">
-            <pre><span class="ruby-comment"># File lib/lato_core/interface/communication.rb, line 44</span>
+            <pre><span class="ruby-comment"># File lib/lato_core/interface/communication.rb, line 68</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">core_getGems</span>
   <span class="ruby-identifier">require</span> <span class="ruby-string">&#39;bundler&#39;</span>
-  <span class="ruby-keyword">return</span> <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">load</span>.<span class="ruby-identifier">specs</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">spec</span><span class="ruby-operator">|</span> <span class="ruby-identifier">spec</span>.<span class="ruby-identifier">name</span> }
+  <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">load</span>.<span class="ruby-identifier">specs</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">spec</span><span class="ruby-operator">|</span> <span class="ruby-identifier">spec</span>.<span class="ruby-identifier">name</span> }
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -217,18 +302,16 @@ dall&#39;applicazione</p>
 
           
           <div class="method-source-code" id="core_getLatoGems-source">
-            <pre><span class="ruby-comment"># File lib/lato_core/interface/communication.rb, line 27</span>
+            <pre><span class="ruby-comment"># File lib/lato_core/interface/communication.rb, line 53</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">core_getLatoGems</span>
   <span class="ruby-identifier">gems</span> = <span class="ruby-identifier">core_getGems</span>
   <span class="ruby-identifier">lato_gems</span> = []
   <span class="ruby-comment"># controllo ogni gemma</span>
   <span class="ruby-identifier">gems</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
-    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">name</span>.<span class="ruby-identifier">start_with?</span> <span class="ruby-string">&#39;lato&#39;</span>)
-      <span class="ruby-identifier">lato_gems</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">name</span>)
-    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">lato_gems</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">name</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">start_with?</span> <span class="ruby-string">&#39;lato&#39;</span>
   <span class="ruby-keyword">end</span>
   <span class="ruby-comment"># ritorno il risultato</span>
-  <span class="ruby-keyword">return</span> <span class="ruby-identifier">lato_gems</span>
+  <span class="ruby-identifier">lato_gems</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -248,7 +331,7 @@ dall&#39;applicazione</p>
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="http://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

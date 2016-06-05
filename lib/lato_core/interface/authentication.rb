@@ -21,8 +21,7 @@ module LatoCore
       # Funzione che controlla se i permessi dell'utente sono superiori al
       # livello ricevuto come parametro
       # * *Returns* :
-      # - true se la sessione dell'utente ha permessi maggiori o uguali del
-      # parametro ricevuto
+      # - true se la sessione dell'utente ha permessi maggiori o uguali del parametro ricevuto
       # - false se la sessione non esiste o non ha i permessi necessari
       def core_controlPermission(permission)
         user = core_getCurrentUser

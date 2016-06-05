@@ -130,10 +130,11 @@ module LatoCore
       def index
         @search_superusers = LatoCore::Superuser.ransack(params[:q])
         # controllo che non vengano mostrati gli utenti impostati nascosti
-        if CORE_SUPERUSERSHIDESETTINGS && !CORE_SUPERUSERSHIDESETTINGS.blank?
+        hide_settings = core_getHideUsersSettings
+        if hide_settings && !hide_settings.blank?
           permissions_not_accepted = []
           current_user_permission = core_getCurrentUser.permission
-          CORE_SUPERUSERSHIDESETTINGS.each do |setting|
+          hide_settings.each do |setting|
             permissions_not_accepted.push(setting.first) if setting.last.to_i === current_user_permission
           end
           @superusers = @search_superusers.result.where.not(permission: permissions_not_accepted)

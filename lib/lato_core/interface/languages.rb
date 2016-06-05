@@ -6,7 +6,7 @@ module LatoCore
       # Funzione che ritorna true se l'applicazione ha piu' lingue, false se
       # l'applicazione ha una singola lingua
       def core_applicationHasLanguages
-        return (CORE_APPLANGUAGES.length > 1) if CORE_APPLANGUAGES
+        return (CORE_APPLANGUAGES.length > 1) if defined? CORE_APPLANGUAGES
         languages = core_getApplicationLanguages
         languages.length > 1
       end
@@ -14,6 +14,7 @@ module LatoCore
       # Funzione che ritorna un array contenente le lingue gestite
       # dall'applicazione
       def core_getApplicationLanguages
+        return CORE_APPLANGUAGES if defined? CORE_APPLANGUAGES
         # definisco variabile di ritorno
         languages = false
         if File.exist? "#{Rails.root}/config/lato/config.yml"

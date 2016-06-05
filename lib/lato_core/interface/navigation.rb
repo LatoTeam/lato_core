@@ -8,6 +8,7 @@ module LatoCore
       # * *Returns* :
       # - array di hash contenenti i dati delle voci di menu
       def core_getNavbarItems
+        return CORE_NAVIGATION if defined? CORE_NAVIGATION
         getApplicationNavbarItems + getLatoNavbarItems
       end
 

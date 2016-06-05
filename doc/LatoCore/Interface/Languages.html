@@ -63,6 +63,8 @@
 
   <ul class="link-list" role="directory">
     
+    <li ><a href="#method-i-core_applicationHasLanguages">#core_applicationHasLanguages</a>
+    
     <li ><a href="#method-i-core_getApplicationLanguages">#core_getApplicationLanguages</a>
     
     <li ><a href="#method-i-core_loadModuleLanguages">#core_loadModuleLanguages</a>
@@ -104,6 +106,42 @@ alle lingue dell&#39;applicazione tra le sezioni offerte dai moduli lato</p>
        </header>
 
     
+      <div id="method-i-core_applicationHasLanguages" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">core_applicationHasLanguages</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Funzione che ritorna true se l&#39;applicazione ha piu&#39; lingue, false
+se l&#39;applicazione ha una singola lingua</p>
+          
+          
+
+          
+          <div class="method-source-code" id="core_applicationHasLanguages-source">
+            <pre><span class="ruby-comment"># File lib/lato_core/interface/languages.rb, line 8</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">core_applicationHasLanguages</span>
+  <span class="ruby-keyword">return</span> (<span class="ruby-constant">CORE_APPLANGUAGES</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>) <span class="ruby-keyword">if</span> <span class="ruby-keyword">defined?</span> <span class="ruby-constant">CORE_APPLANGUAGES</span>
+  <span class="ruby-identifier">languages</span> = <span class="ruby-identifier">core_getApplicationLanguages</span>
+  <span class="ruby-identifier">languages</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
       <div id="method-i-core_getApplicationLanguages" class="method-detail ">
         
         <div class="method-heading">
@@ -124,23 +162,27 @@ dall&#39;applicazione</p>
 
           
           <div class="method-source-code" id="core_getApplicationLanguages-source">
-            <pre><span class="ruby-comment"># File lib/lato_core/interface/languages.rb, line 9</span>
+            <pre><span class="ruby-comment"># File lib/lato_core/interface/languages.rb, line 16</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">core_getApplicationLanguages</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-constant">CORE_APPLANGUAGES</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">defined?</span> <span class="ruby-constant">CORE_APPLANGUAGES</span>
   <span class="ruby-comment"># definisco variabile di ritorno</span>
   <span class="ruby-identifier">languages</span> = <span class="ruby-keyword">false</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span> (<span class="ruby-node">&quot;#{Rails.root}/config/lato/config.yml&quot;</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span> <span class="ruby-node">&quot;#{Rails.root}/config/lato/config.yml&quot;</span>
     <span class="ruby-comment"># accedo al config.yml</span>
-    <span class="ruby-identifier">config</span> = <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-node">&quot;#{Rails.root}/config/lato/config.yml&quot;</span>, <span class="ruby-keyword">__FILE__</span>)))
-    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">config</span>[<span class="ruby-string">&#39;languages&#39;</span>])
+    <span class="ruby-identifier">config</span> = <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(
+      <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-node">&quot;#{Rails.root}/config/lato/config.yml&quot;</span>,
+                                 <span class="ruby-keyword">__FILE__</span>))
+    )
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">config</span>[<span class="ruby-string">&#39;languages&#39;</span>]
       <span class="ruby-identifier">languages</span> = <span class="ruby-identifier">config</span>[<span class="ruby-string">&#39;languages&#39;</span>].<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;,&#39;</span>)
 
       <span class="ruby-identifier">languages</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">language</span><span class="ruby-operator">|</span>
-        <span class="ruby-identifier">language</span> = <span class="ruby-identifier">language</span>.<span class="ruby-identifier">downcase</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&quot; &quot;</span>, <span class="ruby-string">&quot;&quot;</span>)
+        <span class="ruby-identifier">language</span>.<span class="ruby-identifier">downcase</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">&#39; &#39;</span>)
       <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
   <span class="ruby-comment"># ritorno il risultato</span>
-  <span class="ruby-keyword">return</span> <span class="ruby-identifier">languages</span>
+  <span class="ruby-identifier">languages</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -166,22 +208,27 @@ dall&#39;applicazione</p>
         <div class="method-description">
           
           <p>Funzione che ritorna la lettura del file di lingua corretto per il modulo
-il cui nome è ricevuto come parametro</p>
+il cui nome e&#39; ricevuto come parametro</p>
           
           
 
           
           <div class="method-source-code" id="core_loadModuleLanguages-source">
-            <pre><span class="ruby-comment"># File lib/lato_core/interface/languages.rb, line 29</span>
+            <pre><span class="ruby-comment"># File lib/lato_core/interface/languages.rb, line 40</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">core_loadModuleLanguages</span>(<span class="ruby-identifier">module_name</span>)
+  <span class="ruby-identifier">module_root</span> = <span class="ruby-identifier">module_name</span>.<span class="ruby-identifier">camelize</span>.<span class="ruby-identifier">constantize</span><span class="ruby-operator">::</span><span class="ruby-constant">Engine</span>.<span class="ruby-identifier">root</span>
 
-    <span class="ruby-identifier">module_root</span> = <span class="ruby-identifier">module_name</span>.<span class="ruby-identifier">camelize</span>.<span class="ruby-identifier">constantize</span><span class="ruby-operator">::</span><span class="ruby-constant">Engine</span>.<span class="ruby-identifier">root</span>
-
-    <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span> (<span class="ruby-node">&quot;#{module_root}/lang/#{I18n.locale}.yml&quot;</span>)
-      <span class="ruby-keyword">return</span> <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-node">&quot;#{module_root}/lang/#{I18n.locale}.yml&quot;</span>, <span class="ruby-keyword">__FILE__</span>)))
-    <span class="ruby-keyword">else</span>
-      <span class="ruby-keyword">return</span> <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-node">&quot;#{module_root}/lang/default.yml&quot;</span>, <span class="ruby-keyword">__FILE__</span>)))
-    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span> <span class="ruby-node">&quot;#{module_root}/lang/#{I18n.locale}.yml&quot;</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(
+      <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-node">&quot;#{module_root}/lang/#{I18n.locale}.yml&quot;</span>,
+                                 <span class="ruby-keyword">__FILE__</span>))
+    )
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(
+      <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-node">&quot;#{module_root}/lang/default.yml&quot;</span>,
+                                 <span class="ruby-keyword">__FILE__</span>))
+    )
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -201,7 +248,7 @@ il cui nome è ricevuto come parametro</p>
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="http://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

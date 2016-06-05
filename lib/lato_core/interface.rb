@@ -1,5 +1,6 @@
 module LatoCore
-  # Modulo che contiene tutti i moduli che generano l'interfaccia del modulo
+  # L'interfaccia contiene un insieme di funzioni utilizzabili in maniera
+  # universale dall'applicazione principale o da alti moduli
   module Interface
     # Azioni principali per la gestione della cache
     require 'lato_core/interface/cache'

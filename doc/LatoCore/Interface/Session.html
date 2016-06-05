@@ -125,19 +125,20 @@ di utenze per l&#39;accesso al backoffice.</p>
 </li><li>
 <p>true se la sessione dell&#39;utente risulta valida</p>
 </li><li>
-<p>false se la sessione non esiste o non è valida</p>
+<p>false se la sessione non esiste o non e&#39; valida</p>
 </li></ul>
           
           
 
           
           <div class="method-source-code" id="core_controlSession-source">
-            <pre><span class="ruby-comment"># File lib/lato_core/interface/session.rb, line 62</span>
+            <pre><span class="ruby-comment"># File lib/lato_core/interface/session.rb, line 57</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">core_controlSession</span>
-  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:user</span>] <span class="ruby-keyword">and</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:session_code</span>] <span class="ruby-keyword">and</span>
-    <span class="ruby-identifier">user</span> = <span class="ruby-constant">LatoCore</span><span class="ruby-operator">::</span><span class="ruby-constant">Superuser</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:user</span>]) <span class="ruby-keyword">and</span>
-    <span class="ruby-identifier">user</span>.<span class="ruby-identifier">session_code</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:session_code</span>] <span class="ruby-keyword">and</span>
-    <span class="ruby-identifier">user</span>.<span class="ruby-identifier">session_code</span>  <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">user</span> = <span class="ruby-constant">LatoCore</span><span class="ruby-operator">::</span><span class="ruby-constant">Superuser</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:user</span>]) <span class="ruby-keyword">if</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:user</span>]
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">user</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:session_code</span>] <span class="ruby-operator">&amp;&amp;</span>
+     <span class="ruby-identifier">user</span>.<span class="ruby-identifier">session_code</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:session_code</span>] <span class="ruby-operator">&amp;&amp;</span>
+     <span class="ruby-operator">!</span><span class="ruby-identifier">user</span>.<span class="ruby-identifier">session_code</span>.<span class="ruby-identifier">nil?</span>
     <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
@@ -167,9 +168,9 @@ di utenze per l&#39;accesso al backoffice.</p>
         <div class="method-description">
           
           <p>Funzione che crea una nuova sessione per permettere di accedere alle
-funzionalità del backoffice.</p>
+funzionalita&#39; del backoffice.</p>
 <ul><li>
-<p><strong>Args</strong>    :</p>
+<p><strong>Args</strong> :</p>
 </li><li>
 <p><code>username</code> -&gt; username dell&#39;utente</p>
 </li><li>
@@ -177,7 +178,7 @@ funzionalità del backoffice.</p>
 </li><li>
 <p><strong>Returns</strong> :</p>
 </li><li>
-<p>true se l&#39;utente se la sessione è stata creata correttamente</p>
+<p>true se l&#39;utente se la sessione e&#39; stata creata correttamente</p>
 </li><li>
 <p>false se i dati ricevuti come parametro non sono corretti</p>
 </li></ul>
@@ -186,10 +187,10 @@ funzionalità del backoffice.</p>
 
           
           <div class="method-source-code" id="core_createSession-source">
-            <pre><span class="ruby-comment"># File lib/lato_core/interface/session.rb, line 15</span>
+            <pre><span class="ruby-comment"># File lib/lato_core/interface/session.rb, line 14</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">core_createSession</span>(<span class="ruby-identifier">username</span>, <span class="ruby-identifier">password</span>)
-  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">user</span> = <span class="ruby-constant">LatoCore</span><span class="ruby-operator">::</span><span class="ruby-constant">Superuser</span>.<span class="ruby-identifier">find_by</span>(<span class="ruby-identifier">username</span><span class="ruby-operator">:</span> <span class="ruby-identifier">username</span>) <span class="ruby-keyword">and</span>
-    <span class="ruby-identifier">user</span>.<span class="ruby-identifier">authenticate</span>(<span class="ruby-identifier">password</span>))
+  <span class="ruby-identifier">user</span> = <span class="ruby-constant">LatoCore</span><span class="ruby-operator">::</span><span class="ruby-constant">Superuser</span>.<span class="ruby-identifier">find_by</span>(<span class="ruby-identifier">username</span><span class="ruby-operator">:</span> <span class="ruby-identifier">username</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">user</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">authenticate</span>(<span class="ruby-identifier">password</span>)
     <span class="ruby-comment"># genero un session_code</span>
     <span class="ruby-identifier">code</span> = <span class="ruby-constant">SecureRandom</span>.<span class="ruby-identifier">urlsafe_base64</span>
     <span class="ruby-comment"># memorizzo il session_code sul db</span>
@@ -231,24 +232,22 @@ funzionalità del backoffice.</p>
 <ul><li>
 <p><strong>Returns</strong> :</p>
 </li><li>
-<p>true se la sessione è stata eliminata</p>
+<p>true se la sessione e&#39; stata eliminata</p>
 </li><li>
-<p>false se la sessione è ancora attiva</p>
+<p>false se la sessione e&#39; ancora attiva</p>
 </li></ul>
           
           
 
           
           <div class="method-source-code" id="core_destroySession-source">
-            <pre><span class="ruby-comment"># File lib/lato_core/interface/session.rb, line 38</span>
+            <pre><span class="ruby-comment"># File lib/lato_core/interface/session.rb, line 36</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">core_destroySession</span>
-  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:user</span>] <span class="ruby-keyword">and</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:session_code</span>])
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:user</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:session_code</span>]
     <span class="ruby-comment"># determino l&#39;utente della sessione</span>
     <span class="ruby-identifier">user</span> = <span class="ruby-constant">LatoCore</span><span class="ruby-operator">::</span><span class="ruby-constant">Superuser</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:user</span>])
     <span class="ruby-comment"># se l&#39;utente esiste elimino il suo session_code dal db</span>
-    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">user</span>)
-      <span class="ruby-identifier">user</span>.<span class="ruby-identifier">update_attribute</span>(<span class="ruby-string">&#39;session_code&#39;</span>, <span class="ruby-keyword">nil</span>)
-    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">user</span>.<span class="ruby-identifier">update_attribute</span>(<span class="ruby-string">&#39;session_code&#39;</span>, <span class="ruby-keyword">nil</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">user</span>
     <span class="ruby-comment"># elimino le sessioni</span>
     <span class="ruby-identifier">session</span>[<span class="ruby-value">:user</span>] = <span class="ruby-keyword">nil</span>
     <span class="ruby-identifier">session</span>[<span class="ruby-value">:session_code</span>] = <span class="ruby-keyword">nil</span>
@@ -277,7 +276,7 @@ funzionalità del backoffice.</p>
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="http://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 
