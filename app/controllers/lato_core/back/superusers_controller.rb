@@ -4,6 +4,8 @@ module LatoCore
     class SuperusersController < Back::BackController
       # Imposto la voce di menu da attivare
       before_action :set_unique_name
+      # Controllo permessi utente
+      before_action :control_permission
 
       # Richiama la view di creazione di un nuovo utente con permessi di
       # accesso al pannello di backoffice
@@ -156,6 +158,11 @@ module LatoCore
       # Imposta la voce della navbar degli utenti come attiva
       private def set_unique_name
         view_setCurrentVoice('core_superusers')
+      end
+
+      # Controlla che l'utente abbia i permessi per accedere alla sezione
+      private def control_permission
+        redirect_to lato_core.root_path unless core_controlPermission(5)
       end
 
     end
