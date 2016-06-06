@@ -15,7 +15,7 @@ module LatoCore
           File.read(File.expand_path("#{directory}/config.yml", __FILE__))
         )
         # controllo che il file di configurazione esista e abbia i dati necessari
-        return false unless config || config['hide_users'] || config['hide_users'].nil?
+        return false if !config['hide_users'] || config['hide_users'].nil?
         # estraggo lista impostazioni utenti da nascondere
         settings = config['hide_users'].split(',')
         # definisco output
