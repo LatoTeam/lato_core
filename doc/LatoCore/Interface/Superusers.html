@@ -132,7 +132,7 @@ attraverso un array con la seguente struttura: [[1,4], [1,3]]</p>
     <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-node">&quot;#{directory}/config.yml&quot;</span>, <span class="ruby-keyword">__FILE__</span>))
   )
   <span class="ruby-comment"># controllo che il file di configurazione esista e abbia i dati necessari</span>
-  <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">config</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">config</span>[<span class="ruby-string">&#39;hide_users&#39;</span>]
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">config</span>[<span class="ruby-string">&#39;hide_users&#39;</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">config</span>[<span class="ruby-string">&#39;hide_users&#39;</span>].<span class="ruby-identifier">nil?</span>
   <span class="ruby-comment"># estraggo lista impostazioni utenti da nascondere</span>
   <span class="ruby-identifier">settings</span> = <span class="ruby-identifier">config</span>[<span class="ruby-string">&#39;hide_users&#39;</span>].<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;,&#39;</span>)
   <span class="ruby-comment"># definisco output</span>
@@ -140,8 +140,10 @@ attraverso un array con la seguente struttura: [[1,4], [1,3]]</p>
   <span class="ruby-comment"># riempio file di output</span>
   <span class="ruby-identifier">settings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">setting</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">setting</span>.<span class="ruby-identifier">slice!</span> <span class="ruby-string">&#39; &#39;</span>
-    <span class="ruby-identifier">values</span> = <span class="ruby-identifier">setting</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;to&#39;</span>)
-    <span class="ruby-identifier">output</span>.<span class="ruby-identifier">push</span>([<span class="ruby-identifier">values</span>.<span class="ruby-identifier">first</span>, <span class="ruby-identifier">values</span>.<span class="ruby-identifier">last</span>])
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">setting</span>
+      <span class="ruby-identifier">values</span> = <span class="ruby-identifier">setting</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;to&#39;</span>)
+      <span class="ruby-identifier">output</span>.<span class="ruby-identifier">push</span>([<span class="ruby-identifier">values</span>.<span class="ruby-identifier">first</span>, <span class="ruby-identifier">values</span>.<span class="ruby-identifier">last</span>])
+    <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
   <span class="ruby-comment"># ritorno l&#39;output</span>
   <span class="ruby-identifier">output</span>

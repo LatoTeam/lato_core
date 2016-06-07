@@ -2,6 +2,7 @@ module LatoCore
   # L'interfaccia contiene un insieme di funzioni utilizzabili in maniera
   # universale dall'applicazione principale o da alti moduli
   module Interface
+
     # Azioni principali per la gestione della cache
     require 'lato_core/interface/cache'
     include LatoCore::Interface::Cache
@@ -26,5 +27,6 @@ module LatoCore
     # Azioni principali per la gestione delle impostazioni superusers
     require 'lato_core/interface/superusers'
     include LatoCore::Interface::Superusers
+    
   end
 end

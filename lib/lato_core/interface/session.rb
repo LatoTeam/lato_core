@@ -3,6 +3,7 @@ module LatoCore
     # Insieme di funzioni che permettono alla applicazione di gestire
     # le sessioni di utenze per l'accesso al backoffice.
     module Session
+      
       # Funzione che crea una nuova sessione per permettere di accedere
       # alle funzionalita' del backoffice.
       # * *Args* :

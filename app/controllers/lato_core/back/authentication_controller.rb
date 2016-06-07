@@ -2,6 +2,7 @@ module LatoCore
   module Back
     # Controller che gestisce il login e il logout degli utenti
     class AuthenticationController < Back::BackController
+      
       # Richiama la view della pagina di login
       def login
       end

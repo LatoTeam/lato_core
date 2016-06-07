@@ -3,6 +3,7 @@ module LatoCore
     # Insieme di funzioni che permettono di gestire l'autenticazione degli
     # utenti che vogliono accedere al backoffice
     module Authentication
+      
       # Funzione che controlla se l'utente ha i permessi di accedere al
       # backoffice. Se l'utente non ha i permessi viene rimandato alla pagina di login.
       def core_controlUser

@@ -3,6 +3,7 @@ module LatoCore
     # Insieme di funzioni che permettono di gestire l'autenticazione degli
     # utenti che vogliono accedere al backoffice
     module Assets
+      
       # Funzione che ritorna un array contenente gli url relativi degli assets
       # da usare nel layout di lato
       def core_getAssetsItems

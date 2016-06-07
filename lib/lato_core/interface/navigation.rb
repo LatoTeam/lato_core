@@ -3,6 +3,7 @@ module LatoCore
     # Insieme di funzioni che determinano e gestiscono le informazioni
     # riguardo alla navigazione tra le sezioni offerte dai moduli lato
     module Navigation
+      
       # Ritorna un array contenente le voci che andranno a formare il menu
       # di navigazione del backoffice.
       # * *Returns* :

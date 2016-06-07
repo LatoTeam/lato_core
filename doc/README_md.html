@@ -114,6 +114,11 @@ moduli</p>
 <span class="ruby-identifier">bundle</span> <span class="ruby-identifier">exec</span> <span class="ruby-identifier">rake</span> <span class="ruby-identifier">db</span>:<span class="ruby-identifier">migrate</span>
 </pre>
 
+<p>Creare il file di configurazione</p>
+
+<pre class="ruby"><span class="ruby-identifier">rake</span> <span class="ruby-identifier">lato_core_initialize</span>
+</pre>
+
 <p>Avviare il server e accedere al pannello di amministrazione attraverso la
 pagina <em>/lato/core</em></p>
 
@@ -126,66 +131,17 @@ pagina <em>/lato/core</em></p>
 
 <p>NB: Per il corretto funzionamento del modulo è necessario installare
 manualmente anche la gemma <strong><a
-href="https://github.com/gregogalante/lato_view">lato_view</a></strong></p>
+href="https://github.com/LatoTeam/lato_view">lato_view</a></strong></p>
 
 <h2 id="label-Configurazione+-28opzionale-29">Configurazione (opzionale)<span><a href="#label-Configurazione+-28opzionale-29">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
-<p>E possibile configurare Lato inserendo diverse imformazioni nel file di
-configurazione: <em>/config/lato/config.yml</em>. Il file può essere
-generato con il seguente comando:</p>
-
-<pre class="ruby"><span class="ruby-identifier">rake</span> <span class="ruby-identifier">lato_create_config_file</span>
-</pre>
-
-<p>Il file generato avrà al suo interno dei dati di esempio che possono essere
-rimossi se inutilizzati. La struttura del file di configurazione è comunque
-simile alla seguente:</p>
-
-<pre># Impostazione nome applicazione
-app_name: Lato
-
-# Impostazione voci del menu
-menu:
-  example:
-    name: Home
-    url: /
-    icon: align-justify
-    position: 1
-    permission: 0
-
-# Impostazione assets custom
-assets:
-  asset_custom_1:
-    url: back/back
-    type: css
-  asset_custom_2:
-    url: back/back
-    type: js
-
-# Impostazione lingue applicazione
-languages: it, en, de
-
-# Impostazione home del personalizzata del pannello di amministrazione
-login_home: /example
-
-# Imposta quali utenti non mostrare ad altri utenti
-hide_users: 1 to 5, 3 to 6</pre>
-<ul><li>
-<p>app_name: indica il nome della applicazione principale sviluppata con Lato.</p>
-</li><li>
-<p>menu: elenca le voci da inserire nella barra di navigazione di Lato.</p>
-</li><li>
-<p>languages: elenca le varie lingue usate dall&#39;applicazione principale
-sviluppata con Lato.</p>
-</li></ul>
+<p>La configurazione di Lato Core può essere eseguita modificando il file di
+configurazione presente in /config/lato/config.yml</p>
 
 <h2 id="label-Sviluppare+con+Lato+Core">Sviluppare con Lato Core<span><a href="#label-Sviluppare+con+Lato+Core">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
 <p>Per sviluppare utilizzando le funzioni messe a disposizione da Lato è
 possibile consultare la documentazione di ogni singolo modulo.</p>
-
-<p>Per il modulo <strong>lato_core</strong> la documentazione è consultabile
-nella directory <em>doc</em> della repository.</p>
 </main>
 
 

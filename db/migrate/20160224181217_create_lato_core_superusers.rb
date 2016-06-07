@@ -1,5 +1,6 @@
 class CreateLatoCoreSuperusers < ActiveRecord::Migration
   def change
+
     create_table :lato_core_superusers do |t|
       t.string :name
       t.string :username

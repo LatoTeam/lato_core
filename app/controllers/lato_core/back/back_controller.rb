@@ -1,11 +1,12 @@
+# Includo l'interfaccia di lato_core
+include LatoCore::Interface
+# Includo l'interfaccia di lato_view
+include LatoView::Interface
+
 module LatoCore
   module Back
     # Classe che gestisce il pannello di backoffice del modulo
     class BackController < ApplicationController
-      # Includo l'interfaccia di lato_core
-      include LatoCore::Interface
-      # Includo l'interfaccia di lato_view
-      include LatoView::Interface
 
       # Imposto layout di base dal lato_view
       layout 'lato_layout'

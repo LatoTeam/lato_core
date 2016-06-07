@@ -3,6 +3,7 @@ module LatoCore
     # Insieme di funzioni che permettono di ottenere informazioni sulla
     # applicazione principale e sulle altre gemme che lavorano su di essa
     module Communication
+      
       # Ritorna l'url relativo della directory a cui rimandare dopo
       # aver effettuato il login in lato. Se tale valore non e' settato
       # nel file di configurazione di lato allora ritorna semplicemente false.
