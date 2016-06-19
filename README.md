@@ -109,7 +109,7 @@ Contiene una serie di funzioni usate per gestire una directory di cache all'inte
 
 Tale directory può essere utilizzata per memorizzare files di configurazione o altri dati utili.
 
-##### core_getCacheDirectory()
+* ##### core_getCacheDirectory()
 
 Genera la directory di cache nell'applicazione principale nel caso essa non esista e ritorna il path di tale directory
 
@@ -117,7 +117,7 @@ Genera la directory di cache nell'applicazione principale nel caso essa non esis
 
 Continene una serie di funzioni usate per ottenere informazioni sui vari moduli Lato usati nel progetto e per comunicare con loro.
 
-##### core_getApplicationLoginRoot()
+* ##### core_getApplicationLoginRoot()
 
 Ritorna l'url relativo della directory a cui rimandare dopo aver effettuato il login in Lato. Se tale valore non è settato nel file di configurazione allora ritorna semplicemente false.
 
