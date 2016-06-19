@@ -109,7 +109,7 @@ Contiene una serie di funzioni usate per gestire una directory di cache all'inte
 
 Tale directory può essere utilizzata per memorizzare files di configurazione o altri dati utili.
 
-* *core_getCacheDirectory()*
+* **core_getCacheDirectory()**
 
 Genera la directory di cache nell'applicazione principale nel caso essa non esista e ritorna il path di tale directory
 
@@ -117,23 +117,23 @@ Genera la directory di cache nell'applicazione principale nel caso essa non esis
 
 Continene una serie di funzioni usate per ottenere informazioni sui vari moduli Lato usati nel progetto e per comunicare con loro.
 
-* *core_getApplicationLoginRoot()*
+* **core_getApplicationLoginRoot()**
 
 Ritorna l'url relativo della directory a cui rimandare dopo aver effettuato il login in Lato. Se tale valore non è settato nel file di configurazione allora ritorna semplicemente false.
 
-##### core_getApplicationLogo()
+* **core_getApplicationLogo()**
 
 Ritorna l'url del logo custom da applicare alla applicazione Lato. Se non è stato caricato alcun logo allora ritorna false.
 
-##### core_getApplicationName()
+* **core_getApplicationName()**
 
 Ritorna il nome dell'applicazione principale settato nel file di configurazione. Se il file di configurazione non specifica nessun nome allora la funzione ritorna la stringa 'Lato'.
 
-##### core_getLatoGems()
+* **core_getLatoGems()**
 
 Esamina tutte le gemme usate dalla applicazione principale e ritorna solamente quelle appartenenti al progetto Lato sotto forma di array di stringhe.
 
-##### core_getGems()
+* **core_getGems()**
 
 Ritorna la lista dei nomi delle gemme utilizzate dalla applicazione principale sotto forma di array.
 
@@ -141,7 +141,7 @@ Ritorna la lista dei nomi delle gemme utilizzate dalla applicazione principale s
 
 Insieme di funzioni utilizzabili per gestire le sessioni delle utenze di Lato.
 
-##### core_createSession(username, password)
+* **core_createSession(username, password)**
 
 Prende in input le stringhe contenenti l'username e la password di un utente.
 Se i dati dell'utente risultano corretti allora esegue crea una sessione per l'utente e ritorna true; in caso contrario ritorna false.
@@ -150,7 +150,7 @@ Se i dati dell'utente risultano corretti allora esegue crea una sessione per l'u
 
 Insieme di funzioni che gestiscono la sidebar di navigazione del pannello Lato.
 
-##### core_getNavbarItems()
+* **core_getNavbarItems()**
 
 Ritorna un array di hash contenenti le informazioni delle voci della sidebar.
 
@@ -158,7 +158,7 @@ Ritorna un array di hash contenenti le informazioni delle voci della sidebar.
 
 Insieme di funzioni utilizzate per gestire gli assets che definiscono lo stile e il corretto funzionamento del pannello di Lato.
 
-##### core_getAssetsItems()
+* **core_getAssetsItems()**
 
 Ritorna un array contenente gli url relativi degli assets da usare per costruire il layout di Lato.
 
