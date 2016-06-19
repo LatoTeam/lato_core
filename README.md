@@ -166,4 +166,41 @@ Ritorna un array contenente gli url relativi degli assets da usare per costruire
 
 Insieme di funzioni utilizzate per la gestione delle autenticazioni degli utenti.
 
-**Coming Soon**
+* **core_controlUser()**
+
+Controlla che l'utente sia correttamente loggato. Nel caso contrario esegue un redirect alla pagina di login.
+
+* **core_getCurrentUser()**
+
+Ritorna un oggetto contenente l'utente loggato.
+
+* **core_controlPermission(permission)**
+
+Prende in input un numero intero compreso tra 1 e 10. Ritorna true se l'utente loggato ha i permessi maggiori o uguali al valore ricevuto come parametro, altrimenti ritorna false.
+
+#### Interface::Languages
+
+Insieme di funzioni utilizzate per gestire le possibili lingue dell'applicazione.
+
+* **core_applicationHasLanguages()**
+
+Controlla il file di configurazione di Lato per vedere se sono state impostate delle lingue. Se l'applicazione gestisce più di una lingua allora ritorna true, altrimenti false.
+
+* **core_getApplicationLanguages()**
+
+Ritorna un array contenente stringhe indicanti le lingue impostate nel file di configurazione per l'applicazione.
+Se non sono state impostate lingue allora ritorna false.
+
+* **core_loadModuleLanguages(module_name)**
+
+Prende in input una stringa contenente il nome di un modulo Lato utilizzato dall'applicazione. Ritorna la lettura del file contenente tutte le stringhe usate dal modulo tradotte nella lingua principale dell'applicazione.
+
+#### Inteface::Superusers
+
+Insieme di funzioni usate per gestire gli utenti con accesso al pannello Lato.
+
+* **core_getHideUsersSettings()**
+
+Legge il file di configurazione e, se è stato impostato per nascondere determinati utenti ad altri utenti, ritorna tali informazione attraverso un array con la seguente struttura:
+
+[[1,4], [1,3]] => Nascondi utenti con permesso 1 ad utenti con permesso 4, nascondi utenti con permesso 1 ad utenti con permesso 3

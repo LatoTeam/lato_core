@@ -3,7 +3,7 @@ module LatoCore
     # Insieme di funzioni che determinano e gestiscono le informazioni riguardo
     # alle lingue dell'applicazione tra le sezioni offerte dai moduli lato
     module Languages
-      
+
       # Funzione che ritorna true se l'applicazione ha piu' lingue, false se
       # l'applicazione ha una singola lingua
       def core_applicationHasLanguages
@@ -33,7 +33,7 @@ module LatoCore
           end
         end
         # ritorno il risultato
-        languages
+        return languages
       end
 
       # Funzione che ritorna la lettura del file di lingua corretto per
