@@ -23,7 +23,7 @@ Il modulo **lato_core** è in grado di offrire diverse funzionalità tra le qual
 Aggiungere la gemma alla vostra applicazione
 
 ```ruby
-gem 'lato_core'
+gem 'lato_core', git: 'https://github.com/LatoTeam/lato_core.git'
 ```
 Installare la gemma ed eseguire le migrazioni
 
