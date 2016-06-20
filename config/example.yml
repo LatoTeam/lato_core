@@ -1,7 +1,7 @@
 # Set the application name
 
 app_name: Lato
-
+app_root_url: "http://localhost:3000"
 # Add custom voices to the sidebar
 
 # menu:

@@ -15,6 +15,10 @@ CORE_NAVIGATION = core_getNavbarItems
 
 CORE_APPNAME = core_getApplicationName
 
+# IMPOSTAZIONE URL APPLICAZIONE
+
+CORE_APPURL = core_getApplicationURL
+
 # IMPOSTAZIONE ROOT PANNELLO GESTIONALE
 
 CORE_APPLOGINROOT = core_getApplicationLoginRoot

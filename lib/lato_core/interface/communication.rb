@@ -47,6 +47,17 @@ module LatoCore
         end
       end
 
+      def core_getApplicationURL
+        return CORE_APPURL if defined? CORE_APPURL
+        directory = core_getCacheDirectory
+        if File.exist? "#{directory}/config.yml"
+          config = YAML.load(
+            File.read(File.expand_path("#{directory}/config.yml", __FILE__))
+          )
+          return config['app_root_url'] if config && config['app_root_url'] else return 'Lato'
+        end
+      end
+
       # Esamina tutte le gemme della applicazione principale e ritorna
       # solamente quelle appartenenti al progetto Lato.
       # * *Returns* :

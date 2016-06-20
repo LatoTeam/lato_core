@@ -1,27 +1,80 @@
-<% block = view(:block).new(width: 'third', custom_class: 'login-block') %>
+<% block_login = view(:block).new(width: 'third', custom_class: 'flying-block login-block active') %>
+<% block_pwd = view(:block).new(width: 'third', custom_class: 'flying-block recover-block') %>
 
-<%=raw block.open %>
+<div id="admin-wrapper">
+  <div class="main-content">
+    <% # Stampa i flash ricevuti dai controller %>
+    <%= render 'lato_view/layout/flash' %>
 
-  <%= form_tag(lato_core.exec_login_path, method: "post", class: 'lato-form') do %>
+    <!-- Blocco Login Utente -->
+    <%=raw block_login.open %>
 
-    <%=raw view(:input).new(type: 'text',
-                         name: 'username',
-                         label: CORE_LANG['vocabolary']['username']) %>
+      <%= form_tag(lato_core.exec_login_path, method: "post", class: 'lato-form') do %>
+        <%=raw view(:input).new(type: 'text',
+                             name: 'username',
+                             label: CORE_LANG['vocabolary']['username']) %>
 
-   <%=raw view(:input).new(type: 'password',
-                       name: 'password',
-                       label: CORE_LANG['vocabolary']['password']) %>
+       <%=raw view(:input).new(type: 'password',
+                           name: 'password',
+                           label: CORE_LANG['vocabolary']['password']) %>
+
+        <%= submit_tag("Login", class: 'lato-button') %>
+        <a href="#" class="change_form_login lato-button action-button button-yellow"><%=CORE_LANG['superusers']['recover_password']%></a> 
+
+      <% end %>
+
+    <%=raw block_login.close %>
 
 
-    <%= submit_tag("Login", class: 'lato-button') %>
-  <% end %>
+    <!-- Blocco recupero password -->
+    <%=raw block_pwd.open %>
 
-<%=raw block.close %>
+    <%= form_tag(lato_core.recover_password_path, method: "post", class: 'lato-form') do %>
+
+      <%=raw view(:input).new(type: 'email',
+                           name: 'email',
+                           label: CORE_LANG['vocabolary']['email'])
+                           %>
+
+      <%= submit_tag(CORE_LANG['superusers']['recover_password'], class: 'lato-button') %>
+
+      <a href="#" class="change_form_login lato-button action-button button-yellow"><%=CORE_LANG['superusers']['back_to_login']%></a> 
+
+    <% end %>
+
+    <%=raw block_pwd.close %>
+  </div>
+</div>
 
 <style>
-  .login-block {
+  .flying-block {
     position: absolute;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
+    opacity: 0;
+    pointer-events: none;
+    /*transition: 300ms ease-in-out all;*/
+  }
+  .action-button{
+    font-size: 10px;
+  }
+  .active{
+    opacity: 1;
+    pointer-events: all;
+  }
+  .recover-block .action-button{
+    margin-top: 10px;
+  }
+  .flashes-container{
+    top:0px;
   }
 </style>
+
+<script>
+setTimeout(function() {
+  $('.change_form_login').on('click',function(){
+    $('.flying-block').toggleClass('active');
+  });
+
+}, 500);
+</script>

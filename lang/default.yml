@@ -36,3 +36,7 @@ superusers:
   failed_destroy: L'utente non è stato eliminato a causa di un errore
   itself_destroy: Non puoi eliminare te stesso
   permission_destroy: Non puoi eliminare un utente con permessi superiori o uguali ai tuoi
+  recover_password: Recupera password
+  set_new_password_for: Reimposta la password per
+  back_to_login: Ritorna al login
+  password_recover_sent: E' stata inviata una mail di recupero password. Controlla anche la casella spam.
