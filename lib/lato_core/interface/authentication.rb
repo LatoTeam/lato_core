@@ -34,7 +34,7 @@ module LatoCore
       # - true se viene trovato l'utente ed inviata l'email di recupero dopo il setup dei tokens
       # - false se non esiste l'utente
       def core_recoverPassword(email)
-        user = LatoCore::Superuser.find_by(email: email.downcase!)
+        user = LatoCore::Superuser.find_by(email: email.downcase)
         if !user.nil?
           code = SecureRandom.urlsafe_base64
           # memorizzo il session_code sul db
