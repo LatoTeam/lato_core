@@ -36,7 +36,7 @@ module LatoCore
 
       # Esegue il necessario per il recupero password e invia l'email al richiedente
       def password_recover
-        if user = LatoCore::Superuser.find_by(email: params[:email])
+        if user = LatoCore::Superuser.find_by(email: params[:email].downcase)
           # genero il codice da salvare come session code
           code = "RECPSW-#{SecureRandom.urlsafe_base64}"
           # genero il codice per formare l'url di recupero password
