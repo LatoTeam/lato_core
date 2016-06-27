@@ -3,16 +3,17 @@ LatoCore::Engine.routes.draw do
 
   # Authentication
   get 'login', to: 'back/authentication#login', as: 'login'
-  
   post 'exec_login', to: 'back/authentication#exec_login', as: 'exec_login'
   delete 'exec_logout', to: 'back/authentication#exec_logout', as: 'exec_logout'
 
-  # Password recover
-  get 'change_password_form', to: 'back/authentication#change_password_form', as: 'change_password'
-  post 'recover_password', to: 'back/authentication#recover_password', as: 'recover_password'
-  post 'exec_change_password', to: 'back/authentication#exec_change_password', as: 'exec_change_password'
-
-
+  # view richiesta email
+  get 'password_forget', to: 'back/authentication#password_forget', as: 'password_forget'
+  # invio email recupero psw
+  post 'password_recover', to: 'back/authentication#password_recover', as: 'password_recover'
+  # view inserimento nuova psw
+  get 'password_edit/:token', to: 'back/authentication#password_edit', as: 'password_edit'
+  # aggiornamento password
+  post 'password_update', to: 'back/authentication#password_update', as: 'password_update'
   # Users
   resources :superusers, module: 'back'
 

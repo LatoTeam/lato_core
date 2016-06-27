@@ -4,6 +4,13 @@ module LatoCore
     # e visualizzazione dei superusers
     module Superusers
 
+      # Funzione che richiede come parametri un utente, un titolo e un messaggio
+      # e invia tale contenuto come notifica email all'utente
+      def core_notifyUser(user, title, message)
+        # richiamo mailer corretto
+        LatoCore::SuperusersMailer.notify(user, title, message).deliver
+      end
+
       # Funzione che legge il file di cache e, se e' stato impostato per nascondere
       # determinati utenti ad altri utenti, ritorna tali informazione attraverso
       # un array con la seguente struttura: [[1,4], [1,3]]

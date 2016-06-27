@@ -3,7 +3,7 @@ module LatoCore
     # Insieme di funzioni che permettono di ottenere informazioni sulla
     # applicazione principale e sulle altre gemme che lavorano su di essa
     module Communication
-      
+
       # Ritorna l'url relativo della directory a cui rimandare dopo
       # aver effettuato il login in lato. Se tale valore non e' settato
       # nel file di configurazione di lato allora ritorna semplicemente false.
@@ -43,10 +43,16 @@ module LatoCore
           config = YAML.load(
             File.read(File.expand_path("#{directory}/config.yml", __FILE__))
           )
-          return config['app_name'] if config && config['app_name'] else return 'Lato'
+          if config && config['app_name']
+            return config['app_name']
+          else
+            return 'Lato'
+          end
         end
       end
 
+      # Legge il file di configurazione e verifica se e' stato impostato un root url
+      # per l'applicazione. Se non è stato impostato utilizza di default 'localhost'
       def core_getApplicationURL
         return CORE_APPURL if defined? CORE_APPURL
         directory = core_getCacheDirectory
@@ -54,7 +60,29 @@ module LatoCore
           config = YAML.load(
             File.read(File.expand_path("#{directory}/config.yml", __FILE__))
           )
-          return config['app_root_url'] if config && config['app_root_url'] else return 'Lato'
+          if config && config['root_url']
+            return config['root_url']
+          else
+            return 'http://localhost:3000'
+          end
+        end
+      end
+
+      # Legge il file di configurazione e verifica se è stato impostato un indirizzo
+      # email di servizio. Se non e' stata impostata allora utilizza quella di
+      # default 'service@lato.com'
+      def core_getApplicationServiceEmail
+        return CORE_APPSERVICEMAIL if defined? CORE_APPSERVICEMAIL
+        directory = core_getCacheDirectory
+        if File.exist? "#{directory}/config.yml"
+          config = YAML.load(
+            File.read(File.expand_path("#{directory}/config.yml", __FILE__))
+          )
+          if config && config['service_email']
+            return config['service_email']
+          else
+            return 'service@lato.com'
+          end
         end
       end
 

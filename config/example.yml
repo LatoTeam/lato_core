@@ -1,7 +1,7 @@
 # Set the application name
 
 app_name: Lato
-app_root_url: "http://localhost:3000"
+
 # Add custom voices to the sidebar
 
 # menu:
@@ -25,6 +25,14 @@ app_root_url: "http://localhost:3000"
 # Set languages used by the applications (if it has more languages)
 
 # languages: it, en
+
+# Set application root url (default 'localhost')
+
+# root_url: http://localhost:3000
+
+# Set the application service email
+
+# service_email: service@lato.com
 
 # Set custom page after login
 

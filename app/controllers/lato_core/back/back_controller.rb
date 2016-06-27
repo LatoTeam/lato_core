@@ -12,7 +12,7 @@ module LatoCore
       layout 'lato_layout'
 
       # Attivo il controllo delle credenziali
-      before_action :core_controlUser, except: [:login, :exec_login]
+      before_action :core_controlUser
 
       # Richiama la view della home del pannello di backoffice
       def home

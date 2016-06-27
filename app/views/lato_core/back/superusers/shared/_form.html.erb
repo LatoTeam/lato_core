@@ -49,8 +49,10 @@
 
     <div class="form-group">
 
-      <% password_require = true
-        password_require = false if(method === 'put') %>
+      <%
+      password_require = true
+      password_require = false if(method === 'put')
+      %>
 
       <%=raw view(:input).new(type: 'password',
                           value: @superuser.password,

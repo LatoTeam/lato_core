@@ -14,6 +14,9 @@ vocabolary:
   edit: Modifica utente
   new: Nuovo utente
   save: Salva
+  send: Invia
+  login: Login
+  password_forget: Password dimenticata
 
 # FORMS
 forms:
@@ -36,7 +39,22 @@ superusers:
   failed_destroy: L'utente non è stato eliminato a causa di un errore
   itself_destroy: Non puoi eliminare te stesso
   permission_destroy: Non puoi eliminare un utente con permessi superiori o uguali ai tuoi
-  recover_password: Recupera password
-  set_new_password_for: Reimposta la password per
-  back_to_login: Ritorna al login
-  password_recover_sent: E' stata inviata una mail di recupero password. Controlla anche la casella spam.
+  login_error: Username o password errati
+
+# RECOVER_PASSWORD
+recover_password:
+  recover_guide: Inserisci il tuo indirizzo email. Riceverai un nuovo messaggio che ti guiderà alla registrazione di una nuova password.
+  recover_guide_psw: Inserisci la nuova password due volte per aggiornare i tuoi dati di accesso
+  confirm_send: Un email è stata inviata al tuo indirizzo
+  email_subject: Recupero password dimenticata
+  email_intestation: Abbiamo ricevuto una richiesta di recupero password per questo indirizzo email
+  email_guide: Se non ha richiesto il recupero della password ignori questa email. Per creare una nuova password segua il seguente link. Il link ha una validità massima di 24 ore.
+  recover_error_user: L'utente per il quale recuperare la password non esiste
+  recover_error_token: Il token di sicurezza non risulta avere il formato corretto
+  recover_error_token_time: Il token di sicurezza risulta scaduto. Richiedi nuovamente il recupero della password
+  recover_error: Il recupero non è avvenuto a causa di un errore
+  recover_success: L'aggiornamento della password è avvenuto correttamente
+
+# MAILERS
+mailers:
+  notify_subject: Nuova notifica da

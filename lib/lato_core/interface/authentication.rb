@@ -3,7 +3,7 @@ module LatoCore
     # Insieme di funzioni che permettono di gestire l'autenticazione degli
     # utenti che vogliono accedere al backoffice
     module Authentication
-      
+
       # Funzione che controlla se l'utente ha i permessi di accedere al
       # backoffice. Se l'utente non ha i permessi viene rimandato alla pagina di login.
       def core_controlUser
@@ -27,24 +27,6 @@ module LatoCore
       def core_controlPermission(permission)
         user = core_getCurrentUser
         user && user.permission >= permission
-      end
-
-      # Funzione che esegue il recupero password.
-      # * *Returns* :
-      # - true se viene trovato l'utente ed inviata l'email di recupero dopo il setup dei tokens
-      # - false se non esiste l'utente
-      def core_recoverPassword(email)
-        user = LatoCore::Superuser.find_by(email: email.downcase)
-        if !user.nil?
-          code = SecureRandom.urlsafe_base64
-          # memorizzo il session_code sul db
-          user.update_attribute('session_code', code)
-          # invio una mail di recupero
-          LatoCore::LatoCoreMailer.recover_user_password_email(user,code).deliver
-          return true
-        else
-          return false
-        end
       end
 
     end

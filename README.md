@@ -125,9 +125,17 @@ Ritorna l'url relativo della directory a cui rimandare dopo aver effettuato il l
 
 Ritorna l'url del logo custom da applicare alla applicazione Lato. Se non è stato caricato alcun logo allora ritorna false.
 
+* **core_getApplicationURL()**
+
+Legge il file di configurazione e verifica se e' stato impostato un root url per l'applicazione. Se non è stato impostato ritorna il valore di default 'localhost' altrimenti ritorna il valore settato.
+
 * **core_getApplicationName()**
 
 Ritorna il nome dell'applicazione principale settato nel file di configurazione. Se il file di configurazione non specifica nessun nome allora la funzione ritorna la stringa 'Lato'.
+
+* **core_getApplicationServiceEmail()**
+
+Ritorna l' indirizzo email di servizio della applicazione settato nel file di configurazione. Se non è stata impostata alcuna email allora utilizza quella di default 'service@lato.com'.
 
 * **core_getLatoGems()**
 
@@ -199,8 +207,12 @@ Prende in input una stringa contenente il nome di un modulo Lato utilizzato dall
 
 Insieme di funzioni usate per gestire gli utenti con accesso al pannello Lato.
 
+* **core_notifyUser(user, title, message)**
+
+Richiede come parametri un utente, un titolo e un messaggio e invia tale contenuto come notifica email all'utente.
+
 * **core_getHideUsersSettings()**
 
 Legge il file di configurazione e, se è stato impostato per nascondere determinati utenti ad altri utenti, ritorna tali informazione attraverso un array con la seguente struttura:
 
-[[1,4], [1,3]] => Nascondi utenti con permesso 1 ad utenti con permesso 4, nascondi utenti con permesso 1 ad utenti con permesso 3
+[[1,4], [1,3]] => Nascondi utenti con permesso 1 ad utenti con permesso 4, nascondi utenti con permesso 1 ad utenti con permesso 3.

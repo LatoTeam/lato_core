@@ -1,5 +1,4 @@
-<% block_login = view(:block).new(width: 'third', custom_class: 'flying-block login-block active') %>
-<% block_pwd = view(:block).new(width: 'third', custom_class: 'flying-block recover-block') %>
+<% block = view(:block).new(width: 'third', custom_class: 'flying-block') %>
 
 <div id="admin-wrapper">
   <div class="main-content">
@@ -7,7 +6,7 @@
     <%= render 'lato_view/layout/flash' %>
 
     <!-- Blocco Login Utente -->
-    <%=raw block_login.open %>
+    <%=raw block.open %>
 
       <%= form_tag(lato_core.exec_login_path, method: "post", class: 'lato-form') do %>
         <%=raw view(:input).new(type: 'text',
@@ -19,30 +18,13 @@
                            label: CORE_LANG['vocabolary']['password']) %>
 
         <%= submit_tag("Login", class: 'lato-button') %>
-        <a href="#" class="change_form_login lato-button action-button button-yellow"><%=CORE_LANG['superusers']['recover_password']%></a> 
+
+        <%= link_to CORE_LANG['vocabolary']['password_forget'], lato_core.password_forget_path, class: 'link-password-forget' %>
 
       <% end %>
 
-    <%=raw block_login.close %>
+    <%=raw block.close %>
 
-
-    <!-- Blocco recupero password -->
-    <%=raw block_pwd.open %>
-
-    <%= form_tag(lato_core.recover_password_path, method: "post", class: 'lato-form') do %>
-
-      <%=raw view(:input).new(type: 'email',
-                           name: 'email',
-                           label: CORE_LANG['vocabolary']['email'])
-                           %>
-
-      <%= submit_tag(CORE_LANG['superusers']['recover_password'], class: 'lato-button') %>
-
-      <a href="#" class="change_form_login lato-button action-button button-yellow"><%=CORE_LANG['superusers']['back_to_login']%></a> 
-
-    <% end %>
-
-    <%=raw block_pwd.close %>
   </div>
 </div>
 
@@ -51,30 +33,14 @@
     position: absolute;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    opacity: 0;
-    pointer-events: none;
-    /*transition: 300ms ease-in-out all;*/
-  }
-  .action-button{
-    font-size: 10px;
-  }
-  .active{
-    opacity: 1;
-    pointer-events: all;
-  }
-  .recover-block .action-button{
-    margin-top: 10px;
   }
   .flashes-container{
     top:0px;
   }
+  .link-password-forget {
+    display: block;
+    float: right;
+    font-size: 12px;
+    margin-top: 30px;
+  }
 </style>
-
-<script>
-setTimeout(function() {
-  $('.change_form_login').on('click',function(){
-    $('.flying-block').toggleClass('active');
-  });
-
-}, 500);
-</script>
