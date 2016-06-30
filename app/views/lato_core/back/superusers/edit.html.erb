@@ -3,8 +3,10 @@
 <%= raw view(:actionbar).new(title: "#{CORE_LANG['vocabolary']['edit']} #{@superuser.username}",
                              links: [[CORE_LANG['vocabolary']['users'], lato_core.superusers_path]]) %>
 
-<%= raw block.open %>
+<div class="content-row">
+  <%= raw block.open %>
 
-  <%= render 'lato_core/back/superusers/shared/form', method: 'put' %>
+    <%= render 'lato_core/back/superusers/shared/form', method: 'put' %>
 
-<%= raw block.close %>
+  <%= raw block.close %>
+</div>

@@ -9,15 +9,17 @@
                             title: CORE_LANG['vocabolary']['users'],
                             widgets: [[searchbar, :right]]) %>
 
-<%=raw block.open %>
+<div class="content-row">
+  <%=raw block.open %>
 
 
-  <%=raw view(:index).new(head: [CORE_LANG['vocabolary']['username'], CORE_LANG['vocabolary']['email']],
-                       elements: @superusers,
-                       attributes: ['username', 'email'],
-                       link: lato_core.superusers_path,
-                       show_link: false) %>
+    <%=raw view(:index).new(head: [CORE_LANG['vocabolary']['username'], CORE_LANG['vocabolary']['email']],
+                         elements: @superusers,
+                         attributes: ['username', 'email'],
+                         link: lato_core.superusers_path,
+                         show_link: false) %>
 
-  <%= will_paginate @superusers %>
+    <%= will_paginate @superusers %>
 
-<%=raw block.close %>
+  <%=raw block.close %>
+</div>

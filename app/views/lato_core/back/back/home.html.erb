@@ -5,9 +5,11 @@
 
 <% block = view(:block).new() %>
 
-<%=raw block.open %>
+<div class="content-row">
+  <%=raw block.open %>
 
-  <h1><%= CORE_LANG['vocabolary']['dashboard'] %></h1>
-  <p><%= @message %></p>
+    <h1><%= CORE_LANG['vocabolary']['dashboard'] %></h1>
+    <p><%= @message %></p>
 
-<%=raw block.close %>
+  <%=raw block.close %>
+</div>
