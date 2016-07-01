@@ -1,13 +1,24 @@
 <% block = view(:block).new(width: 'third', custom_class: 'flying-block') %>
 
-<div id="admin-wrapper">
-  <div class="main-content">
+  <div class="main-content login">
     <% # Stampa i flash ricevuti dai controller %>
     <%= render 'lato_view/layout/flash' %>
 
-    <!-- Blocco Login Utente -->
-    <%=raw block.open %>
+    <ul class="bg-bubbles">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
 
+    <!-- Blocco Login Utente -->
+    <div class="content-login">
       <%= form_tag(lato_core.exec_login_path, method: "post", class: 'lato-form') do %>
         <%=raw view(:input).new(type: 'text',
                              name: 'username',
@@ -22,25 +33,6 @@
         <%= link_to CORE_LANG['vocabolary']['password_forget'], lato_core.password_forget_path, class: 'link-password-forget' %>
 
       <% end %>
-
-    <%=raw block.close %>
+    </div>
 
   </div>
-</div>
-
-<style>
-  .flying-block {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  .flashes-container{
-    top:0px;
-  }
-  .link-password-forget {
-    display: block;
-    float: right;
-    font-size: 12px;
-    margin-top: 30px;
-  }
-</style>
