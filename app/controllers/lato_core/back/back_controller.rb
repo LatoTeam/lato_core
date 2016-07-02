@@ -16,7 +16,8 @@ module LatoCore
 
       # Richiama la view della home del pannello di backoffice
       def home
-        @message = CORE_LANG['welcome'] + ' ' + core_getApplicationName
+        # rimando ad una pagina custom se è stato impostato da file di configurazione
+        redirect_to login_root if login_root = core_getApplicationLoginRoot and login_root
       end
 
     end
