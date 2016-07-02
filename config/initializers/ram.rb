@@ -2,6 +2,9 @@ include LatoCore::Interface
 
 # Insieme di variabili globali che mantengono dati altrimenti
 # memorizzati in file yaml.
+# Solitamente contengono la lettura del file di configurazione.
+# Cambiare l'ordine in cui sono inserite potrebbe compromettere il corretto
+# funzionamento del modulo.
 
 # IMPOSTAZIONE LISTA ASSETS
 
@@ -38,3 +41,15 @@ CORE_SUPERUSERSHIDESETTINGS = core_getHideUsersSettings
 # IMPOSTAZIONE INDIRIZZO EMAIL DI SERVIZIO
 
 CORE_APPSERVICEMAIL = core_getApplicationServiceEmail
+
+# IMPOSTAZIONE PERMESSI UTENTE DA NASCONDERE ALL'UTENTE
+
+CORE_SUPERUSERSPERMISSIONSHIDESETTINGS = core_getHideUsersPermissionsSettings
+
+# IMPOSTAZIONE NOMI DEI PERMESSI UTENTE
+
+CORE_SUPERUSERSPERMISSIONSNAMESSETTINGS = core_getUsersPermissionsNamesSettings
+
+# IMPOSTAZIONE PERMESSI UTENTE
+
+CORE_SUPERUSERSPERMISSIONS = core_getUsersPermissions

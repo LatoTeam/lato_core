@@ -37,7 +37,7 @@
                           name: 'superuser[permission]',
                           label: CORE_LANG['vocabolary']['permission'],
                           width: 'half',
-                          options: (1...11).to_a,
+                          options: core_getUsersPermissions,
                           required: true) %>
 
     </div>

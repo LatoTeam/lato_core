@@ -211,8 +211,24 @@ Insieme di funzioni usate per gestire gli utenti con accesso al pannello Lato.
 
 Richiede come parametri un utente, un titolo e un messaggio e invia tale contenuto come notifica email all'utente.
 
+* **core_getUsersPermissions()**
+
+Ritorna la lista dei permessi che possono essere assegnati agli utenti amministratori sotto forma di array con la seguente struttura:
+
+[[1,'nome_permesso'], [2,'nome_permesso']]
+
 * **core_getHideUsersSettings()**
 
 Legge il file di configurazione e, se è stato impostato per nascondere determinati utenti ad altri utenti, ritorna tali informazione attraverso un array con la seguente struttura:
 
 [[1,4], [1,3]] => Nascondi utenti con permesso 1 ad utenti con permesso 4, nascondi utenti con permesso 1 ad utenti con permesso 3.
+
+* **core_getHideUsersPermissionsSettings()**
+
+Ritorna un array contenente i valori di permessi che non devono essere mostrati nel form di creazione/modifica utente.
+
+* **core_getUsersPermissionsNamesSettings()**
+
+Ritorna la traduzione dei valori di permessi utente impostata nel file di configurazione secondo la seguente struttura:
+
+[[1,'nome_permesso'], [2,'nome_permesso']]
