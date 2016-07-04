@@ -57,8 +57,8 @@ module LatoCore
           setting.slice! ' '
           if setting
             values = setting.split('to')
-            raise 'Permission value not correct on hide_users config' unless (1..11).to_a.include? values.first
-            raise 'Permission value not correct on hide_users config' unless (1..11).to_a.include? values.last
+            raise 'Permission value not correct on hide_users config' unless (1..11).to_a.include? values.first.to_i
+            raise 'Permission value not correct on hide_users config' unless (1..11).to_a.include? values.last.to_i
             output.push([values.first, values.last])
           end
         end
