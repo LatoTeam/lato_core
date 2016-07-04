@@ -18,6 +18,9 @@
 
     <!-- Blocco Login Utente -->
     <div class="content-login">
+      <% if(logo = core_getApplicationLogo) %>
+        <div style="text-align: center;"><%= image_tag 'lato/logo' %></div>
+      <% end %>
       <%= form_tag(lato_core.exec_login_path, method: "post", class: 'lato-form') do %>
         <%=raw view(:input).new(type: 'text',
                              name: 'username',

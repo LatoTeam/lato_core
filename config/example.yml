@@ -29,10 +29,10 @@ service_email: service@lato.com
 # Add custom assets to the layout
 # assets:
 #   style:
-#     url: application
+#     name: application
 #     type: css
 #   code:
-#     url: application
+#     name: application
 #     type: js
 
 # Set custom page after login

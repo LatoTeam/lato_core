@@ -92,7 +92,12 @@ menu:
 
 ### Modificare il logo del pannello di Lato
 
-Il logo standard del pannello di Lato può essere sostituito semplicemente inserendo nella directory /config/lato/ un file svg chiamato 'logo.svg'.
+Il logo standard del pannello di Lato può essere sostituito semplicemente inserendo nella directory /assets/images/lato/ un file chiamato 'logo' in uno dei seguenti formati:
+
+.svg
+.png
+.jpg
+.gif
 
 ### Funzione d'interfaccia di Lato Core
 
@@ -111,7 +116,7 @@ Tale directory può essere utilizzata per memorizzare files di configurazione o 
 
 * **core_getCacheDirectory()**
 
-Genera la directory di cache nell'applicazione principale nel caso essa non esista e ritorna il path di tale directory
+Genera le directory per gli assets e la directory di cache nell'applicazione principale nel caso esse non esistano e ritorna il path della directory di cache.
 
 #### Interface::Communication
 

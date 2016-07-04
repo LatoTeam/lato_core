@@ -24,12 +24,12 @@ module LatoCore
       # Se non e' stato caricato alcun logo allora ritorna false
       def core_getApplicationLogo
         return CORE_APPLOGO if defined? CORE_APPLOGO
-        directory = core_getCacheDirectory
-        if File.exist? "#{directory}/logo.svg"
-          return File.read("#{directory}/logo.svg")
-        else
-          return false
+        dir = "#{Rails.root}/app/assets/images/lato/"
+        if File.exist?("#{dir}/logo.svg") || File.exist?("#{dir}/logo.png") ||
+           File.exist?("#{dir}/logo.jpg") || File.exist?("#{dir}/logo.gif")
+          return "lato/logo"
         end
+        return false
       end
 
       # Ritorna il nome dell'applicazione principale settato nel file

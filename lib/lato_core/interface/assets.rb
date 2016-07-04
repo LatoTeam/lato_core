@@ -3,7 +3,7 @@ module LatoCore
     # Insieme di funzioni che permettono di gestire l'autenticazione degli
     # utenti che vogliono accedere al backoffice
     module Assets
-      
+
       # Funzione che ritorna un array contenente gli url relativi degli assets
       # da usare nel layout di lato
       def core_getAssetsItems
@@ -73,11 +73,11 @@ module LatoCore
           config['assets'].each do |voice|
             # estraggo i dati
             # unique_name = voice[0]
-            url = voice[1]['url'].downcase
+            name = voice[1]['name'].downcase
             type = voice[1]['type'].downcase
             # genero l'oggetto con le informazioni di output
             output_voice = {
-              url: url,
+              name: name,
               type: type
             }
             # aggiungo la voce al risultato
