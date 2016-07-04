@@ -19,12 +19,13 @@ module LatoCore
         return CORE_SUPERUSERSPERMISSIONS if defined? CORE_SUPERUSERSPERMISSIONS
         # definisco permessi iniziali
         initial_permissions = (1...11).to_a
-        # definisco permessi pubblicabili
-        permitted_permissions = initial_permissions - core_getHideUsersPermissionsSettings
+        
+        unpermitted = core_getHideUsersPermissionsSettings
+        return initial_permissions if !unpermitted
+        permitted_permissions = initial_permissions - unpermitted
 
         permissions = []
         names = core_getUsersPermissionsNamesSettings
-
         return permitted_permissions if !names
 
         permitted_permissions.each do |permission|
