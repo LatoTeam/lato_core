@@ -20,18 +20,6 @@ module LatoCore
         end
       end
 
-      # Ritorna l'url del logo custom da applicare alla applicazione Lato.
-      # Se non e' stato caricato alcun logo allora ritorna false
-      def core_getApplicationLogo
-        return CORE_APPLOGO if defined? CORE_APPLOGO
-        dir = "#{Rails.root}/app/assets/images/lato/"
-        if File.exist?("#{dir}/logo.svg") || File.exist?("#{dir}/logo.png") ||
-           File.exist?("#{dir}/logo.jpg") || File.exist?("#{dir}/logo.gif")
-          return "lato/logo"
-        end
-        return false
-      end
-
       # Ritorna il nome dell'applicazione principale settato nel file
       # config/lato/config.yml.
       # Se l'applicazione principale non specifica nessun nome allora

@@ -6,10 +6,6 @@ include LatoCore::Interface
 # Cambiare l'ordine in cui sono inserite potrebbe compromettere il corretto
 # funzionamento del modulo.
 
-# IMPOSTAZIONE LISTA ASSETS
-# Contiene la lista degli assets custom lato
-CORE_ASSETS = core_getAssetsItems
-
 # IMPOSTAZIONE VOCI DI NAVIGAZIONE
 # Contiene la lista di voci di navigazione di lato
 CORE_NAVIGATION = core_getNavbarItems
@@ -26,21 +22,17 @@ CORE_APPURL = core_getApplicationURL
 # Contiene l'url della pagina di benvenuto custom
 CORE_APPLOGINROOT = core_getApplicationLoginRoot
 
-# IMPOSTAZIONE LOGO CUSTOM SVG PANNELLO
-# Contiene il path del logo custom del pannello
-CORE_APPLOGO = core_getApplicationLogo
-
 # IMPOSTAZIONE LINGUE DELL'APPLICAZIONE
-
+# Continene la lista delle lingue dell'applicazione gestita con lato
 CORE_APPLANGUAGES = core_getApplicationLanguages
-
-# IMPOSTAZIONE DATI SU UTENTI NASCOSTI
-
-CORE_SUPERUSERSHIDESETTINGS = core_getHideUsersSettings
 
 # IMPOSTAZIONE INDIRIZZO EMAIL DI SERVIZIO
 
 CORE_APPSERVICEMAIL = core_getApplicationServiceEmail
+
+# IMPOSTAZIONE DATI SU UTENTI NASCOSTI
+
+CORE_SUPERUSERSHIDESETTINGS = core_getHideUsersSettings
 
 # IMPOSTAZIONE PERMESSI UTENTE DA NASCONDERE ALL'UTENTE
 

@@ -15,9 +15,6 @@ module LatoCore
     # Azioni principali per la gestione della navigazione
     require 'lato_core/interface/navigation'
     include LatoCore::Interface::Navigation
-    # Azioni principali per la gestione degli assets
-    require 'lato_core/interface/assets'
-    include LatoCore::Interface::Assets
     # Azioni principali per il controllo dell'autenticazione
     require 'lato_core/interface/authentication'
     include LatoCore::Interface::Authentication
@@ -27,6 +24,6 @@ module LatoCore
     # Azioni principali per la gestione delle impostazioni superusers
     require 'lato_core/interface/superusers'
     include LatoCore::Interface::Superusers
-    
+
   end
 end

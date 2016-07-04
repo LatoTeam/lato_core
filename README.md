@@ -90,15 +90,6 @@ menu:
     permission: 0
 ```
 
-### Modificare il logo del pannello di Lato
-
-Il logo standard del pannello di Lato può essere sostituito semplicemente inserendo nella directory /assets/images/lato/ un file chiamato 'logo' in uno dei seguenti formati:
-
-.svg
-.png
-.jpg
-.gif
-
 ### Funzione d'interfaccia di Lato Core
 
 Le funzioni di interfaccia sono una serie di funzioni messe a disposizione dal modulo per essere utilizzate durante lo sviluppo dell'applicazione o di nuovi moduli.
@@ -125,10 +116,6 @@ Continene una serie di funzioni usate per ottenere informazioni sui vari moduli 
 * **core_getApplicationLoginRoot()**
 
 Ritorna l'url relativo della directory a cui rimandare dopo aver effettuato il login in Lato. Se tale valore non è settato nel file di configurazione allora ritorna semplicemente false.
-
-* **core_getApplicationLogo()**
-
-Ritorna l'url del logo custom da applicare alla applicazione Lato. Se non è stato caricato alcun logo allora ritorna false.
 
 * **core_getApplicationURL()**
 

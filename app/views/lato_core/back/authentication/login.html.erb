@@ -18,8 +18,8 @@
 
     <!-- Blocco Login Utente -->
     <div class="content-login">
-      <% if(logo = core_getApplicationLogo) %>
-        <div class="login-logo"><%= image_tag 'lato/logo' %></div>
+      <% if(login_logo = view_getLoginLogo) %>
+        <div class="login-logo"><%= image_tag login_logo %></div>
       <% end %>
       <%= form_tag(lato_core.exec_login_path, method: "post", class: 'lato-form') do %>
         <%=raw view(:input).new(type: 'text',
