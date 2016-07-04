@@ -19,7 +19,7 @@ module LatoCore
         return CORE_SUPERUSERSPERMISSIONS if defined? CORE_SUPERUSERSPERMISSIONS
         # definisco permessi iniziali
         initial_permissions = (1...11).to_a
-        
+
         unpermitted = core_getHideUsersPermissionsSettings
         return initial_permissions if !unpermitted
         permitted_permissions = initial_permissions - unpermitted
@@ -80,7 +80,7 @@ module LatoCore
         # controllo che il file di configurazione esista e abbia i dati necessari
         return false if !config['hide_users_permissions'] || config['hide_users_permissions'].nil?
         # estraggo lista impostazioni utenti da nascondere
-        settings = config['hide_users_permissions'].split(',')
+        settings = config['hide_users_permissions'].to_s.split(',')
         # definisco output
         output = []
         # riempio file di output
