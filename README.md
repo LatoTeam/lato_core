@@ -25,17 +25,22 @@ Aggiungere la gemma alla vostra applicazione
 ```ruby
 gem 'lato_core', git: 'https://github.com/LatoTeam/lato_core.git'
 ```
-Installare la gemma ed eseguire le migrazioni
+Installare la gemma
 
 ```console
 bundle install
-bundle exec rake db:migrate
 ```
 
 Creare il file di configurazione
 
 ```console
 rake lato_core_initialize
+```
+
+Eseguire le migrazioni
+
+```console
+bundle exec rake db:migrate
 ```
 
 Avviare il server e accedere al pannello di amministrazione attraverso la pagina */lato/core*
