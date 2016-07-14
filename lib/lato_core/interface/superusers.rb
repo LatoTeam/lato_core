@@ -16,7 +16,6 @@ module LatoCore
       # Il risultato della funzione e' compatibile con la componente input select
       # di lato_view
       def core_getUsersPermissions
-        return CORE_SUPERUSERSPERMISSIONS if defined? CORE_SUPERUSERSPERMISSIONS
         # definisco permessi iniziali
         initial_permissions = (1...11).to_a
 

@@ -4,7 +4,7 @@ include LatoCore::Interface
 
 CORE_LANG = core_loadModuleLanguages('lato_core')
 
-# IMPOSTAZIONE UTENTE AMMINISTRATORE
+# CREAZIONE UTENTE AMMINISTRATORE
 
 if ActiveRecord::Base.connection.table_exists? 'lato_core_superusers'
 

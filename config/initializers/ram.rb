@@ -27,21 +27,19 @@ CORE_APPLOGINROOT = core_getApplicationLoginRoot
 CORE_APPLANGUAGES = core_getApplicationLanguages
 
 # IMPOSTAZIONE INDIRIZZO EMAIL DI SERVIZIO
-
+# Contiene l'indirizzo email usato cdi default come mittente del mailer
 CORE_APPSERVICEMAIL = core_getApplicationServiceEmail
 
 # IMPOSTAZIONE DATI SU UTENTI NASCOSTI
-
+# Contiene la lista di permessi utente che rappresentano gli utenti da non
+# mostrare nella pagina users.
 CORE_SUPERUSERSHIDESETTINGS = core_getHideUsersSettings
 
 # IMPOSTAZIONE PERMESSI UTENTE DA NASCONDERE ALL'UTENTE
-
+# Contiene la lista di permessi utente da non mostrare nel form di creazione/modifica
+# utenti
 CORE_SUPERUSERSPERMISSIONSHIDESETTINGS = core_getHideUsersPermissionsSettings
 
 # IMPOSTAZIONE NOMI DEI PERMESSI UTENTE
-
+# Contiene la lista di traduzioni da numero permesso utente a valore testuale
 CORE_SUPERUSERSPERMISSIONSNAMESSETTINGS = core_getUsersPermissionsNamesSettings
-
-# IMPOSTAZIONE PERMESSI UTENTE
-
-CORE_SUPERUSERSPERMISSIONS = core_getUsersPermissions

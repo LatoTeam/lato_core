@@ -39,7 +39,7 @@ rake lato_core_initialize
 
 Eseguire le migrazioni
 
-```console
+```console 
 bundle exec rake db:migrate
 ```
 
