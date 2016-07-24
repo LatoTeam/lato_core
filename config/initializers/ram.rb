@@ -43,3 +43,8 @@ CORE_SUPERUSERSPERMISSIONSHIDESETTINGS = core_getHideUsersPermissionsSettings
 # IMPOSTAZIONE NOMI DEI PERMESSI UTENTE
 # Contiene la lista di traduzioni da numero permesso utente a valore testuale
 CORE_SUPERUSERSPERMISSIONSNAMESSETTINGS = core_getUsersPermissionsNamesSettings
+
+# IMPOSTAZIONI VISUALIZZAZIONE SEZIONE RECUPERO PASSWORD
+# Contiene un valore booleano indicante se e' possibile o meno utilizzare il
+# recupero password per gli utenti
+CORE_RECOVERYPASSWORDPERMISSION = core_getRecoveryPasswordPermission

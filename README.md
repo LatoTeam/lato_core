@@ -39,7 +39,7 @@ rake lato_core_initialize
 
 Eseguire le migrazioni
 
-```console 
+```console
 bundle exec rake db:migrate
 ```
 
@@ -229,3 +229,7 @@ Ritorna un array contenente i valori di permessi che non devono essere mostrati 
 Ritorna la traduzione dei valori di permessi utente impostata nel file di configurazione secondo la seguente struttura:
 
 [[1,'nome_permesso'], [2,'nome_permesso']]
+
+* **core_getRecoveryPasswordPermission()**
+
+Controlla se e' permesso il servizio di recupero password per gli utenti. Ritorna true se è permesso, false altrimenti.

@@ -32,8 +32,10 @@
 
         <%= submit_tag("Login", class: 'lato-button') %>
 
-        <%= link_to CORE_LANG['vocabolary']['password_forget'], lato_core.password_forget_path, class: 'link-password-forget' %>
-
+        <% if core_getRecoveryPasswordPermission %>
+          <%= link_to CORE_LANG['vocabolary']['password_forget'], lato_core.password_forget_path, class: 'link-password-forget' %>
+        <% end %>
+        
       <% end %>
     </div>
 

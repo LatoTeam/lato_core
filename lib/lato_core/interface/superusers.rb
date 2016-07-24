@@ -123,6 +123,21 @@ module LatoCore
         return output
       end
 
+      # Funzione che controlla se e' permesso il servizio di recupero password
+      # per gli utenti. Ritorna true se è permesso, false altrimenti.
+      def core_getRecoveryPasswordPermission
+        return CORE_RECOVERYPASSWORDPERMISSION if defined? CORE_RECOVERYPASSWORDPERMISSION
+        # accedo al config.yml
+        directory = core_getCacheDirectory
+        config = YAML.load(
+          File.read(File.expand_path("#{directory}/config.yml", __FILE__))
+        )
+        # controllo che il file di configurazione esista e abbia i dati necessari
+        return false if !config['recovery_password'] || config['recovery_password'].nil?
+        # ritorno valore letto
+        return config['recovery_password']
+      end
+
     end
   end
 end

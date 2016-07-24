@@ -31,11 +31,13 @@ module LatoCore
       # Richiama la view per la richiesta di una nuova password nel caso di
       # password dimenticata
       def password_forget
+        redirect_to lato_core.root_path unless core_getRecoveryPasswordPermission
         redirect_to lato_core.root_path if core_controlSession
       end
 
       # Esegue il necessario per il recupero password e invia l'email al richiedente
       def password_recover
+        redirect_to lato_core.root_path unless core_getRecoveryPasswordPermission
         if user = LatoCore::Superuser.find_by(email: params[:email].downcase)
           # genero il codice da salvare come session code
           code = "RECPSW-#{SecureRandom.urlsafe_base64}"
@@ -54,6 +56,7 @@ module LatoCore
 
       # Richiama la view con il form per l'inserimento di una nuova password
       def password_edit
+        redirect_to lato_core.root_path unless core_getRecoveryPasswordPermission
         redirect_to lato_core.root_path if core_controlSession
         # splitto il token ricevuto (formato: id utente, timestamp, session_code)
         data = URI.decode(params[:token]).split('::')
@@ -90,6 +93,7 @@ module LatoCore
 
       # Aggiorna la password dell'utente che ha richiesto il recupero password
       def password_update
+        redirect_to lato_core.root_path unless core_getRecoveryPasswordPermission
         user = LatoCore::Superuser.find(params[:id])
         if !user || user.session_code != params[:token]
           flash[:warning] = CORE_LANG['recover_password']['recover_error']

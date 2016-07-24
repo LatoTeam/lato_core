@@ -2,22 +2,31 @@
 # -----------------------------------------------------------------------------
 # Please, set a correct value for these informations
 
-# Set the application name
+# Set the application name.
+# Application name is used for lots of settings.
+
 app_name: Lato
 
-# Set languages used by the applications (if it has more languages)
+# Set languages used by the applications (if it has more languages).
+
 languages: it
 
-# Set application root url (default 'localhost')
+# Set application root url (default 'localhost').
+
 root_url: http://localhost:3000
 
-# Set the application service email
+# Set the application service email.
+# Service email is used for email options on Lato like user notifications or
+# password revocery.
+
 service_email: service@lato.com
 
 # Usage informations
 # -----------------------------------------------------------------------------
 
-# Add custom voices to the sidebar
+# Add custom voices to the sidebar.
+# Custom voices are sections on sidebar used for the navigation inside the Lato panel.
+
 # menu:
 #   example:
 #     name: Menu voice
@@ -27,16 +36,31 @@ service_email: service@lato.com
 #     permission: 0
 
 # Set custom page after login
+# This is the welcome page that user see after a correct login.
+
 # login_home: "/example"
 
 # Users settings
 # -----------------------------------------------------------------------------
 
 # Hide users with permission value to users with others permission value
+# You can hide users on users section. For example '1 to 2' means that users with
+# permission 2 can not see the names of users with permission 1 on the users list.
+
 # hide_users: 1 to 2, 4 to 6
 
-# Rename users permission from number to text value
+# Rename users permission from number to text value on users form.
+# You can set a custom name to users permissions. For example '1 - Client'
+# means that you read 'Client' instead of 1 on the permissions input on the user form.
+
 # rename_users_permissions: 1 - Client, 5 - Operator
 
-# Hide users permissions on users form
+# Hide users permissions on users form.
+# You can set that users can not see these values on the permissions input on
+# the user form.
+
 # hide_users_permissions: 2, 3, 4
+
+# Permit users to use the recovery password section if they loose their password.
+
+# recovery_password: false
