@@ -2,7 +2,7 @@ module LatoCore
   module Back
     # Controller che gestisce il CRUD degli utenti amministratori
     class SuperusersController < Back::BackController
-      
+
       # Imposto la voce di menu da attivare
       before_action :set_unique_name
       # Controllo permessi utente
@@ -163,7 +163,7 @@ module LatoCore
 
       # Controlla che l'utente abbia i permessi per accedere alla sezione
       private def control_permission
-        redirect_to lato_core.root_path unless core_controlPermission(5)
+        redirect_to lato_core.root_path unless core_controlPermission(6)
       end
 
     end
