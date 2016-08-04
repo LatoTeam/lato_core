@@ -40,10 +40,10 @@ module LatoCore
       # il modulo il cui nome e' ricevuto come parametro
       def core_loadModuleLanguages(module_name)
         module_root = module_name.camelize.constantize::Engine.root
-
-        if File.exist? "#{module_root}/lang/#{I18n.locale}.yml"
+        application_lang = Rails.application.config.i18n.default_locale
+        if File.exist? "#{module_root}/lang/#{application_lang}.yml"
           return YAML.load(
-            File.read(File.expand_path("#{module_root}/lang/#{I18n.locale}.yml",
+            File.read(File.expand_path("#{module_root}/lang/#{application_lang}.yml",
                                        __FILE__))
           )
         else
