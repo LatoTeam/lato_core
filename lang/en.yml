@@ -1,0 +1,61 @@
+# WELCOME MESSAGE
+welcome: Welcome to the Lato admin panel
+dashboard: Made with love by Lato team
+
+# VOCABOLARY
+vocabolary:
+  dashboard: Dashboard
+  users: Admins
+  name: Name
+  username: Username
+  email: Email
+  permission: Permission
+  password: Password
+  password_confirmation: Password confirm
+  edit: Modify admin
+  new: New admin
+  save: Save
+  send: Send
+  login: Login
+  password_forget: Forgotten password
+
+# FORMS
+forms:
+  base_informations: Base information
+  user_password: Admin password
+  password_edit_settings: Leave empty if you don't want to change it
+
+# SUPERUSERS
+superusers:
+  not_found: Admin not found
+  success_create: Admin created
+  failed_create: Admin was not possibile to create
+  permission_create: You cannot create ad Admin with higher permission level than yours
+  success_update: The admin was successfully created
+  failed_update: Error on update
+  permission_update: You can't update this admin
+  level_update: You can't update your permission to an higher level
+  admin_update: The real admin is untouchable
+  success_destroy: Admin deleted
+  failed_destroy: Admin delete failed
+  itself_destroy: You can't delete your self
+  permission_destroy: You can't delete this admin
+  login_error: Username or password was wrong
+
+# RECOVER_PASSWORD
+recover_password:
+  recover_guide: Insert your email address. You will receive there a password reset message.
+  recover_guide_psw: Insert twice your password
+  confirm_send: Email was sent. Check your inbox!
+  email_subject: Recover forgotten password
+  email_intestation: Recover now your password
+  email_guide: Follow this link to recover your password. This link will be active for 24 hours.
+  recover_error_user: The user was not found
+  recover_error_token: Token is not valid
+  recover_error_token_time: Token expired
+  recover_error: Something went wrong
+  recover_success: Your password was resetted
+
+# MAILERS
+mailers:
+  notify_subject: New message from
