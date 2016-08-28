@@ -1,6 +1,7 @@
 
   <div class="main-content login">
-    <% # Stampa i flash ricevuti dai controller %>
+
+    <!-- Login flash messages -->
     <%= render 'lato_view/layout/flash' %>
 
     <ul class="bg-bubbles">
@@ -16,27 +17,29 @@
       <li></li>
     </ul>
 
-    <!-- Blocco Login Utente -->
+    <!-- Login block -->
     <div class="content-login">
+
       <% if(login_logo = view_getLoginLogo) %>
         <div class="login-logo"><%= image_tag login_logo %></div>
       <% end %>
-      <%= form_tag(lato_core.exec_login_path, method: "post", class: 'lato-form') do %>
-        <%=raw view(:input).new(type: 'text',
-                             name: 'username',
-                             label: CORE_LANG['vocabolary']['username']) %>
 
-       <%=raw view(:input).new(type: 'password',
-                           name: 'password',
-                           label: CORE_LANG['vocabolary']['password']) %>
+      <%= form_tag(lato_core.exec_login_path, method: "post", class: 'lato-form') do %>
+
+        <%=raw view(:input, :text).new(name: 'username',
+               label: CORE_LANG['vocabolary']['username']) %>
+
+       <%=raw view(:input, :password).new(name: 'password',
+              label: CORE_LANG['vocabolary']['password']) %>
 
         <%= submit_tag("Login", class: 'lato-button') %>
 
         <% if core_getRecoveryPasswordPermission %>
           <%= link_to CORE_LANG['vocabolary']['password_forget'], lato_core.password_forget_path, class: 'link-password-forget' %>
         <% end %>
-        
+
       <% end %>
+
     </div>
 
   </div>

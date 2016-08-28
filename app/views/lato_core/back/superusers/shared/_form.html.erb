@@ -6,12 +6,9 @@
 
     <div class="form-group">
 
-      <%=raw view(:input).new(type: 'text',
-                              value: @superuser.name,
-                              name: 'superuser[name]',
-                              label: CORE_LANG['vocabolary']['name'],
-                              width: 'half',
-                              required: true) %>
+      <%=raw view(:input, :text).new(value: @superuser.name, name: 'superuser[name]',
+                                     label: CORE_LANG['vocabolary']['name'],
+                                     width: 'half', required: true) %>
 
       <%=raw view(:input).new(type: 'text',
                               value: @superuser.username,

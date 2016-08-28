@@ -1,7 +1,18 @@
-<% block = view(:block).new %>
+<%
 
-<%= raw view(:actionbar).new(title: "#{CORE_LANG['vocabolary']['edit']} #{@superuser.username}",
-                             links: [[CORE_LANG['vocabolary']['users'], lato_core.superusers_path]]) %>
+# set default block
+block = view(:layout, :block).new
+
+# set back button
+back_button = view(:component, :button).new(title: 'Back', url: lato_core.superusers_path,
+              size: 'small')
+
+# set actionbar
+actionbar = view(:layout, :actionbar).new(title: "#{CORE_LANG['vocabolary']['edit']} #{@superuser.username}",
+            widgets: [{component: back_button, align: 'right'}])
+%>
+
+<%= raw actionbar %>
 
 <div class="content-row">
   <%= raw block.open %>

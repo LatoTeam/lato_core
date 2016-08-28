@@ -1,17 +1,17 @@
 <%
 
-# Definisco blocco principale
-block = view(:block).new()
+# set default block
+block = view(:layout, :block).new()
 
-# Definisco actionbar
-actionbar = view(:actionbar).new(title: CORE_LANG['vocabolary']['dashboard'])
+# set actionbar
+actionbar = view(:layout, :actionbar).new(title: CORE_LANG['vocabolary']['dashboard'])
 
 %>
 
 <%=raw actionbar %>
 
 <div class="content-row">
-  <%=raw block.open(width: 'medium-12 large-6') %>
+  <%=raw block.open(width: 'medium-12 large-12') %>
 
     <p><b><%= CORE_LANG['welcome'] %></b></p>
     <p><%= CORE_LANG['dashboard'] %></p>
