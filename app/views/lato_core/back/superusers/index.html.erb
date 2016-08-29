@@ -1,23 +1,33 @@
-<% block = view(:block).new %>
+<%
 
-<% searchbar = view(:searchbar).new(elements: @search_superusers,
-                            url: lato_core.superusers_path,
-                            filter: :username_cont,
-                            style: :rounded)  %>
+block = view(:layout, :block).new
 
-<%=raw view(:actionbar).new(links: [[CORE_LANG['vocabolary']['new'], lato_core.new_superuser_path]],
-                            title: CORE_LANG['vocabolary']['users'],
-                            widgets: [[searchbar, :right]]) %>
+searchbar = view(:component, :searchbar).new(elements: @search_superusers,
+            url: lato_core.superusers_path, filter: :username_cont,
+            style: :rounded)
+
+new_button = view(:component, :button).new(title: CORE_LANG['vocabolary']['new'],
+             url: lato_core.new_superuser_path, size: :small)
+
+actionbar = view(:layout, :actionbar).new(title: CORE_LANG['vocabolary']['users'],
+            widgets: [
+              {component: searchbar, align: :right},
+              {component: new_button, align: :right}
+              ])
+
+index = view(:layout, :index).new(head: [CORE_LANG['vocabolary']['username'], CORE_LANG['vocabolary']['email']],
+        elements: @superusers, attributes: ['username', 'email'], link: lato_core.superusers_path,
+        show_link: false)
+
+%>
+
+<%=raw actionbar %>
 
 <div class="content-row">
   <%=raw block.open %>
 
 
-    <%=raw view(:index).new(head: [CORE_LANG['vocabolary']['username'], CORE_LANG['vocabolary']['email']],
-                         elements: @superusers,
-                         attributes: ['username', 'email'],
-                         link: lato_core.superusers_path,
-                         show_link: false) %>
+    <%=raw index %>
 
     <%= will_paginate @superusers %>
 

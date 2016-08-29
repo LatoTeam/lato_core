@@ -1,7 +1,16 @@
-<% block = view(:block).new %>
+<%
 
-<%=raw view(:actionbar).new(title: CORE_LANG['vocabolary']['new'],
-                            links: [[CORE_LANG['vocabolary']['users'], lato_core.superusers_path]]) %>
+block = view(:layout, :block).new
+
+back_button = view(:component, :button).new(title: 'Back', url: lato_core.superusers_path,
+              size: 'small')
+
+actionbar = view(:layout, :actionbar).new(title: CORE_LANG['vocabolary']['new'],
+            widgets: [{component: back_button, align: 'right'}])
+
+%>
+
+<%=raw actionbar %>
 
 <div class="content-row">
   <%=raw block.open %>
