@@ -1,22 +1,22 @@
 module LatoCore
   module Interface::Cache
 
-    # Funzione che ritorna il percorso alla directory di cache usata dai
-    # moduli lato per memorizzare informazioni sull'applicazione principale.
-    # La directory dell'app principale usata come cache si trova nel percorso
-    # #{Rails.root}/config/lato
+    # Create lato cache directory inside the project if they don't exist and
+    # return the string of the path used as main cache for lato.
+    # * *Returns* :
+    # - string cache path
     def core_getCacheDirectory
-      # creo le directory per gli assets se non esistono
+      # directories for assets
       dirname = "#{Rails.root}/app/assets/images/lato"
       FileUtils.mkdir_p(dirname) unless File.exist?(dirname)
       dirname = "#{Rails.root}/app/assets/stylesheets/lato"
       FileUtils.mkdir_p(dirname) unless File.exist?(dirname)
       dirname = "#{Rails.root}/app/assets/javascripts/lato"
       FileUtils.mkdir_p(dirname) unless File.exist?(dirname)
-      # creo la directory di cache se non esiste
+      # main cache directory
       dirname = "#{Rails.root}/config/lato"
       FileUtils.mkdir_p(dirname) unless File.exist?(dirname)
-      # ritorno la directory di cache
+      # return directory
       return dirname
     end
 

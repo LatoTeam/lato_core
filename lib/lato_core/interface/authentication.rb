@@ -15,7 +15,7 @@ module LatoCore
       return user if session[:user] && session[:session_code] && user
     end
 
-    # Check if user permission is equal or greater than param
+    # Check if user permission is equal or greater than param.
     # * *Params* :
     # - permission: integer value between 1 to 10
     # * *Returns* :
