@@ -1,11 +1,8 @@
 module LatoCore
-  # Classe che gestisce l'inizializzazione del modulo.
-  # Principalmente si occupa di rendere obbligatorie le migrazioni nell'app
-  # principale e di inserire nel Rails.application.routes le routes del modulo.
   class Engine < ::Rails::Engine
     isolate_namespace LatoCore
 
-    # Aggiunta del supporto alle migrazioni
+    # Add migration support
     initializer 'Add migration support' do |app|
       unless app.root.to_s.match root.to_s
         config.paths['db/migrate'].expanded.each do |expanded_path|
@@ -14,13 +11,13 @@ module LatoCore
       end
     end
 
-    # Aggiunta del supporto ai routes
+    # Add routes support
     initializer 'Add gem routes to application',
                 before: :load_config_initializers do
       Rails.application.routes.append do
-        # modificare '/lato/starter' con l'url di base dei routes del modulo
         mount LatoCore::Engine, at: '/lato/core'
       end
     end
+
   end
 end
