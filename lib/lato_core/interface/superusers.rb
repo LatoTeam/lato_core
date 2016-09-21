@@ -17,6 +17,7 @@ module LatoCore
       initial_permissions = (1...11).to_a
 
       unpermitted = core_getHideUsersPermissionsSettings
+      permitted_permissions = initial_permissions
       permitted_permissions = initial_permissions - unpermitted if unpermitted
 
       permissions = []
