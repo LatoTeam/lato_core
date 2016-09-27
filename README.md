@@ -19,12 +19,6 @@ Generate the initializer (Rails 5)
 rails lato_core_initialize
 ```
 
-Generate the initializer (Rails 4)
-
-```console
-rake lato_core_initialize
-```
-
 Exec migrations
 
 ```console
@@ -42,19 +36,14 @@ NB: You must install to work lato property **[lato_view](https://github.com/Lato
 
 ## Configuration (optional)
 
-La configurazione di lato_core può essere eseguita modificando il file di configurazione presente in /config/lato/config.yml.
+The gem lato_core can be configured with the file /config/lato/config.yml.
 
-All'interno del file sono presenti una serie di impostazioni che possono essere personalizzate per adattare il pannello di amministrazione alla applicazione che si vuole sviluppare.
+The config.yml file is created with the "lato_core_initialize" command and contain a list of important
+settings.
 
-## Sviluppare con Lato Core
+## Develop with Lato Core
 
-Per sviluppare utilizzando le funzioni messe a disposizione da Lato è possibile consultare la documentazione di ogni singolo modulo.3
-
-### Aggiungere un custom controller al pannello Lato
-
-Durante lo sviluppo di una applicazione può essere necessario integrare delle sezioni customizzate al pannello di amministrazione di Lato.
-
-Per integrare le view di un controller al pannello di Lato basta impostare il layout di lato_view e controllare l'autenticazione dell'utente.
+### Add a custom controller to the Lato panel
 
 ```ruby
 class CustomController < ApplicationController
@@ -65,18 +54,12 @@ class CustomController < ApplicationController
 end
 ```
 
-### Aggiungere una voce di menu al pannello di Lato
-
-La sidebar di Lato si compone in modo automatico con le voci di menu dei moduli utilizzati nel progetto. Le voci di menu sono visibili agli utenti con permessi minimi di livello 5 (in una scala da 1 a 10).
-
-Per aggiungere una voce di menu al pannello basta modificare il file di configurazione in /config/lato/config.yml.
-
-Un esempio di file di configurazione che aggiunge una voce al menu è il seguente:
+### Add a menu voice to the Lato panel
 
 ```yaml
 menu:
-  example:
-    name: Prodotti
+  products:
+    name: Products
     url: "/admin/products"
     icon: arrow-right
     position: 1
