@@ -1,6 +1,5 @@
 module LatoCore
   module Back
-    # Controller che gestisce il login e il logout degli utenti
     class AuthenticationController < Back::BackController
 
       # Disattivo il controllo dell'autenticazione utente

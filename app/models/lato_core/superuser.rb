@@ -1,8 +1,10 @@
 module LatoCore
-  # Modello che si riferisce agli utenti con accesso al pannello di amministrazione
+  # Model for user with access to administration panel
   class Superuser < ActiveRecord::Base
 
-    # Lista validazioni
+    # Validations
+    ############################################################################
+
     validates :name, presence: true, length: { maximum: 50 }
 
     validates :username, presence: true,
@@ -23,7 +25,9 @@ module LatoCore
 
     has_secure_password
 
-    # Azioni prima del salvataggio
+    # Before db update
+    ############################################################################
+
     before_save do
       username.downcase!
       email.downcase!
@@ -31,11 +35,10 @@ module LatoCore
       set_admin_permission
     end
 
-    # Funzione che imposta i permessi dell'utente amministratore al
-    # massimo livello
+    # set permission to ten for first user on panel
     private def set_admin_permission
       first_user = LatoCore::Superuser.first
-      self.permission = 10 if first_user && id === first_user.id
+      self.permission = 10 if first_user && self.id === first_user.id
     end
 
   end
