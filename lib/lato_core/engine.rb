@@ -19,7 +19,7 @@ module LatoCore
       end
     end
 
-    # Add interface
+    # Add interface to main application
     config.autoload_paths << LatoCore::Engine.root.join('lib/interface')
 
   end

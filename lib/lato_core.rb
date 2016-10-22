@@ -1,4 +1,3 @@
-# TODO: Write here Module presentation
 module LatoCore
 
   # include engine and interface

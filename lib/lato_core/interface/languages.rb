@@ -1,19 +1,16 @@
 module LatoCore
+  # This module contains functions used to get languages info.
   module Interface::Languages
 
-    # Return true if application has more than one language on config file.
-    # * *Returns* :
-    # - boolean value to say if application has more than one language
+    # This function return a boolean value to tells if applications has
+    # languages set to config file.
     def core_applicationHasLanguages
       return (CORE_APPLANGUAGES.length > 1) if defined? CORE_APPLANGUAGES
       languages = core_getApplicationLanguages
       return languages.length > 1
     end
 
-    # Return an array of string with languages of application set on config file.
-    # * *Returns* :
-    # - array of string if application has languages on config file
-    # - false if application has not languages on config files
+    # This function return an array of languages used by application.
     def core_getApplicationLanguages
       return CORE_APPLANGUAGES if defined? CORE_APPLANGUAGES
       languages = false
@@ -33,12 +30,7 @@ module LatoCore
       return languages
     end
 
-    # Receive a string with the name of a lato module as params. Return the yaml file
-    # result of the language of the application.
-    # * *Params* :
-    # - module_name: string with the name of a lato module used by the project
-    # * *Returns* :
-    # - hash of language file for the module
+    # This function load and return the languages for a lato module.
     def core_loadModuleLanguages(module_name)
       module_root = module_name.camelize.constantize::Engine.root
       application_lang = Rails.application.config.i18n.default_locale

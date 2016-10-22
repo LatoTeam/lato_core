@@ -1,19 +1,14 @@
 module LatoCore
+  # This module contains funtions used for the navigation inside the application.
   module Interface::Navigation
 
-    # Ritorna un array contenente le voci che andranno a formare il menu
-    # di navigazione del backoffice.
-    # * *Returns* :
-    # - array di hash contenenti i dati delle voci di menu
+    # This function return an array with navbar voices.
     def core_getNavbarItems
       return CORE_NAVIGATION if defined? CORE_NAVIGATION
       getApplicationNavbarItems + getLatoNavbarItems
     end
 
-    # Ritorna un array contenente le voci delle gemme lato che andranno
-    # a formare il menu di navigazione del backoffice.
-    # * *Returns* :
-    # - array di hash contenenti i dati delle voci di menu
+    # This function return an array with lato navbar voices.
     private def getLatoNavbarItems
       # inizializzo la lista delle voci della navbar
       navbar_items = []
@@ -42,10 +37,7 @@ module LatoCore
       navbar_items
     end
 
-    # Ritorna un array contenente le voci della applicazione principale
-    # che andranno a formare il menu di navigazione del backoffice.
-    # * *Returns* :
-    # - array di hash contenenti i dati delle voci di menu
+    # This function return an array with application navbar voices.
     private def getApplicationNavbarItems
       directory = core_getCacheDirectory
       # inizializzo la lista delle voci della navbar
@@ -68,8 +60,7 @@ module LatoCore
       navbar_items
     end
 
-    # Estrae i dati relativi alla navbar dal file config.yml di una
-    # applicazione controllando che la struttura del file sia corretta
+    # This function read and return config datas about navbar from a config file.
     private def getConfigNavbarData(config)
       # inizializzo la lista di dati
       results = []

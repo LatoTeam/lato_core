@@ -1,4 +1,4 @@
-include LatoCore::Interface
+include LatoCore
 
 # Initialize module on project
 desc 'Create config.yml file for Lato configuration'

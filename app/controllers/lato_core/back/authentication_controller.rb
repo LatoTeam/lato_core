@@ -1,17 +1,17 @@
 module LatoCore
   module Back
+    # This class is used for authentication actions.
     class AuthenticationController < Back::BackController
 
-      # Disattivo il controllo dell'autenticazione utente
+      # not use login check for actions on this controller.
       skip_before_action :core_controlUser, except: [:exec_logout]
 
-      # Richiama la view della pagina di login
+      # This function render login view if user is not logged.
       def login
         redirect_to lato_core.root_path if core_controlSession
       end
 
-      # Esegue il login e, se l'utente e' autenticato lo rimanda
-      # alla homepage del backoffice
+      # This function exec the login for user using username and password.
       def exec_login
         if core_createSession(params[:username], params[:password])
           redirect_to lato_core.root_path
@@ -21,20 +21,21 @@ module LatoCore
         end
       end
 
-      # Esegue il logout e rimanda alla pagina di login del backoffice
+      # This function exec the logout for user and redirect it to login page.
       def exec_logout
         core_destroySession
         redirect_to lato_core.login_path
       end
 
-      # Richiama la view per la richiesta di una nuova password nel caso di
-      # password dimenticata
+      # This function render the password forget view if user active this
+      # action on config file.
       def password_forget
         redirect_to lato_core.root_path unless core_getRecoveryPasswordPermission
         redirect_to lato_core.root_path if core_controlSession
       end
 
-      # Esegue il necessario per il recupero password e invia l'email al richiedente
+      # This function exec the recover password action and send the email to
+      # user for new password.
       def password_recover
         redirect_to lato_core.root_path unless core_getRecoveryPasswordPermission
         if user = LatoCore::Superuser.find_by(email: params[:email].downcase)
@@ -53,7 +54,8 @@ module LatoCore
         redirect_to lato_core.login_path
       end
 
-      # Richiama la view con il form per l'inserimento di una nuova password
+      # This function render the edit view for user who ask to recover
+      # its password (and check if it can do this action).
       def password_edit
         redirect_to lato_core.root_path unless core_getRecoveryPasswordPermission
         redirect_to lato_core.root_path if core_controlSession
@@ -90,7 +92,7 @@ module LatoCore
         @user.update_attribute(:session_code, new_code)
       end
 
-      # Aggiorna la password dell'utente che ha richiesto il recupero password
+      # This function ecec the password update after the recovery request.
       def password_update
         redirect_to lato_core.root_path unless core_getRecoveryPasswordPermission
         user = LatoCore::Superuser.find(params[:id])

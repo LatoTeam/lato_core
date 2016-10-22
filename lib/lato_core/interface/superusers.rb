@@ -1,17 +1,16 @@
 module LatoCore
+  # This module contains function used to manage superusers.
   module Interface::Superusers
 
-    # Funzione che richiede come parametri un utente, un titolo e un messaggio
-    # e invia tale contenuto come notifica email all'utente
+    # This function send a notification email to user with title and
+    # description.
     def core_notifyUser(user, title, message)
       # richiamo mailer corretto
       LatoCore::SuperusersMailer.notify(user, title, message).deliver
     end
 
-    # Funzione che ritorna una lista dei possibili permessi per gli utenti
-    # utilizzando la seguente struttura: [[1, 'Nome'], [2, 'Nome']].
-    # Il risultato della funzione e' compatibile con la componente input select
-    # di lato_view
+    # This function return a list of possible permissions for superusers with
+    # the string name for every permission.
     def core_getUsersPermissions
       # definisco permessi iniziali
       initial_permissions = (1...11).to_a
@@ -33,9 +32,8 @@ module LatoCore
       return permissions
     end
 
-    # Funzione che legge il file di cache e, se e' stato impostato per nascondere
-    # determinati utenti ad altri utenti, ritorna tali informazione attraverso
-    # un array con la seguente struttura: [[1,4], [1,3]]
+    # This function return an array that tells how some users can't see
+    # other users with a specific permission value.
     def core_getHideUsersSettings
       return CORE_SUPERUSERSHIDESETTINGS if defined? CORE_SUPERUSERSHIDESETTINGS
       # accedo al config.yml
@@ -63,9 +61,8 @@ module LatoCore
       return output
     end
 
-    # Funzione che legge il file di configurazione e, se e' stato impostato di
-    # nascondere determinati permessi di utenze dall'interfaccia, ritorna i
-    # valori da nascondere in un array
+    # This function return an array of permissions value that must be hidden
+    # from the user interface.
     def core_getHideUsersPermissionsSettings
       return CORE_SUPERUSERSPERMISSIONSHIDESETTINGS if defined? CORE_SUPERUSERSPERMISSIONSHIDESETTINGS
       # accedo al config.yml
@@ -91,9 +88,8 @@ module LatoCore
       return output
     end
 
-    # Funzione che legge il file di configurazione e, se e' stato impostato di rinominare
-    # dei valori di permessi degli utenti, ritorna tali valori in un array con la seguente
-    # struttura: [[1,'nome'], [4,'nome']]
+    # This function return an array with correct name fr every permission
+    # if name is set on config file.
     def core_getUsersPermissionsNamesSettings
       return CORE_SUPERUSERSPERMISSIONSNAMESSETTINGS if defined? CORE_SUPERUSERSPERMISSIONSNAMESSETTINGS
       # accedo al config.yml
@@ -120,8 +116,7 @@ module LatoCore
       return output
     end
 
-    # Funzione che controlla se e' permesso il servizio di recupero password
-    # per gli utenti. Ritorna true se è permesso, false altrimenti.
+    # This function tells if is possible for user to recover his password.
     def core_getRecoveryPasswordPermission
       return CORE_RECOVERYPASSWORDPERMISSION if defined? CORE_RECOVERYPASSWORDPERMISSION
       # accedo al config.yml

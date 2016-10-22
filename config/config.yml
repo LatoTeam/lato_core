@@ -1,4 +1,4 @@
-# Impostazione voci del menu
+# Menu voices
 menu:
   core_superusers:
     name: Admin

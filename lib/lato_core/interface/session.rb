@@ -1,14 +1,9 @@
 module LatoCore
+  # This module contains functions used to get information about user session.
   module Interface::Session
 
-    # Funzione che crea una nuova sessione per permettere di accedere
-    # alle funzionalita' del backoffice.
-    # * *Args* :
-    # - +username+ -> username dell'utente
-    # - +password+ -> password dell'utente
-    # * *Returns* :
-    # - true se l'utente se la sessione e' stata creata correttamente
-    # - false se i dati ricevuti come parametro non sono corretti
+    # This function create a new session for user with username and
+    # password received as params.
     def core_createSession(username, password)
       user = LatoCore::Superuser.find_by(username: username)
       if user && user.authenticate(password)
@@ -27,10 +22,7 @@ module LatoCore
       end
     end
 
-    # Funzione che elimina una sessione di accesso al backoffice se presente
-    # * *Returns* :
-    # - true se la sessione e' stata eliminata
-    # - false se la sessione e' ancora attiva
+    # This function destroy the current user session.
     def core_destroySession
       if session[:user] && session[:session_code]
         # determino l'utente della sessione
@@ -48,10 +40,7 @@ module LatoCore
       end
     end
 
-    # Funzione che controlla se l'utente ha una sessione valida.
-    # * *Returns* :
-    # - true se la sessione dell'utente risulta valida
-    # - false se la sessione non esiste o non e' valida
+    # This function check if user session is valid.
     def core_controlSession
       user = LatoCore::Superuser.find(session[:user]) if session[:user]
 
@@ -63,6 +52,6 @@ module LatoCore
         return false
       end
     end
-    
+
   end
 end

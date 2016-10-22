@@ -1,5 +1,5 @@
 module LatoCore
-  # Classe base dei controller del modulo
+  # This class is the main controller class of lato_core.
   class ApplicationController < ActionController::Base
 
   end

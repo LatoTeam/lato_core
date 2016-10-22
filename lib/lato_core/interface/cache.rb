@@ -1,10 +1,9 @@
 module LatoCore
+  # This module contains functions for cache information.
   module Interface::Cache
 
-    # Create lato cache directory inside the project if they don't exist and
-    # return the string of the path used as main cache for lato.
-    # * *Returns* :
-    # - string cache path
+    # This function return a string with the path of cache directory on
+    # main project.
     def core_getCacheDirectory
       # directories for assets
       dirname = "#{Rails.root}/app/assets/images/lato"
