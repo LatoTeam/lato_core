@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
   s.name        = "lato_core"
-  s.version     = "1.1.3"
+  s.version     = "1.1.4"
   s.authors     = ["Gregorio Galante, Antonio Dal Cin, Riccardo Zanutta"]
   s.email       = ["gregogalante@gmail.com"]
   s.homepage    = "https://github.com/LatoTeam/lato_core"
