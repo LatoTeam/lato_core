@@ -26,24 +26,11 @@ module LatoCore
     before_create do
       username.downcase!
       email.downcase!
-
-      set_admin_permission
     end
 
     before_update do
       username.downcase!
       email.downcase!
-
-      set_admin_permission
-    end
-
-    # Private functions
-    ############################################################################
-
-    # This function set permission to 10 for first superuser.
-    private def set_admin_permission
-      first_user = LatoCore::Superuser.first
-      self.permission = 10 if first_user && self.id === first_user.id
     end
 
   end
