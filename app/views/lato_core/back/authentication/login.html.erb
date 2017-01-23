@@ -24,7 +24,7 @@
         <div class="login-logo"><%= image_tag login_logo %></div>
       <% end %>
 
-      <%= form_tag(lato_core.exec_login_path, method: "post", class: 'lato-form') do %>
+      <%= form_tag(lato_core.exec_login_path, method: "post", class: 'lato-form login-form') do %>
 
         <%=raw view(:input, :text).new(name: 'username',
                label: CORE_LANG['vocabolary']['username']) %>
